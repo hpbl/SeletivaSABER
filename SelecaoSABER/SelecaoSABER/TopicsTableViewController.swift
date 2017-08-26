@@ -126,10 +126,8 @@ class TopicsTableViewController: UITableViewController {
                 fatalError("nenhuma célula selecionada")
             }
             
-            let selectedTopic = self.topics[index.row]
+            detailsVC.topic = self.topics[index.row]
             
-            detailsVC.topics.append(selectedTopic)
-
         default:
             break
         }

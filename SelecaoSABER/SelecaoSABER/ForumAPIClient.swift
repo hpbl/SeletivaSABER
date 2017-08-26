@@ -14,5 +14,7 @@ protocol ForumAPIClient {
     
     func getPosts(_ callback: @escaping ([Post]) -> Void)
     
-    func save(title: String, message: String, callback: @escaping (Int?) -> Void) -> Void
+    func save(title: String, message: String, callback: @escaping (Int?) -> Void)
+    
+    func getComments(for post: Post, callback: @escaping ([Comment]) -> Void)
 }

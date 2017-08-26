@@ -57,4 +57,28 @@ class SABERClient: ForumAPIClient {
                 }
         }
     }
+    
+    func getComments(for post: Post, callback: @escaping ([Comment]) -> Void) {
+        let requestURL = Constant.endPoint + Constant.URI.forum.rawValue + "/" + String(post.id)
+        
+        Alamofire.request(requestURL,
+                          method: .get,
+                          headers: self.headers)
+            .responseJSON { response in
+                if let resultJSON = response.result.value as? [String: Any] {
+                    
+                    if let commentsJSON = resultJSON["comments"] as? [[String: Any]] {
+                        var comments: [Comment] = []
+                        for commentJSON in commentsJSON {
+                            comments.append(Comment(from: commentJSON))
+                        }
+                        
+                        callback(comments)
+                    }
+                } else {
+                    fatalError("no response")
+                }
+        }
+        
+    }
 }
