@@ -26,9 +26,7 @@ class TopicDetailsViewController: UIViewController {
         self.detailsTableView.delegate = self
         self.detailsTableView.dataSource = self
         
-        
         self.getComments()
-        
     }
     
     override func didReceiveMemoryWarning() {
