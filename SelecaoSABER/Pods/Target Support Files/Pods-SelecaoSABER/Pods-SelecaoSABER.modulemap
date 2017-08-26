@@ -1,0 +1,6 @@
+framework module Pods_SelecaoSABER {
+  umbrella header "Pods-SelecaoSABER-umbrella.h"
+
+  export *
+  module * { export * }
+}
