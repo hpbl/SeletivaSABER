@@ -63,6 +63,14 @@ class TopicsTableViewController: UITableViewController {
 
         // TODO: Add content to cell
         
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as? TopicTableViewCell else {
+            fatalError("célula com tipo estranho")
+        }
+        
+        let currentTopic = self.topics[indexPath.row]
+        
+        cell.setupInterface(with: currentTopic)
+        
         return cell
 
     }

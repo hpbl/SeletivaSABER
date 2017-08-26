@@ -12,6 +12,8 @@
 		7105FE2C1F517E09003D8BD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7105FE2A1F517E09003D8BD6 /* Main.storyboard */; };
 		7105FE2E1F517E09003D8BD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7105FE2D1F517E09003D8BD6 /* Assets.xcassets */; };
 		7105FE311F517E09003D8BD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7105FE2F1F517E09003D8BD6 /* LaunchScreen.storyboard */; };
+		7140C7B81F51CB3E00405582 /* TopicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140C7B71F51CB3E00405582 /* TopicTableViewCell.swift */; };
+		7140C7BA1F51D00600405582 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140C7B91F51D00600405582 /* Extensions.swift */; };
 		71E43B561F518731007EDFDA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E43B551F518731007EDFDA /* LoginViewController.swift */; };
 		71E43B581F51874E007EDFDA /* TopicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E43B571F51874E007EDFDA /* TopicsTableViewController.swift */; };
 		71E43B5A1F518764007EDFDA /* TopicDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E43B591F518764007EDFDA /* TopicDetailsViewController.swift */; };
@@ -30,6 +32,8 @@
 		7105FE2D1F517E09003D8BD6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7105FE301F517E09003D8BD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7105FE321F517E09003D8BD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7140C7B71F51CB3E00405582 /* TopicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicTableViewCell.swift; sourceTree = "<group>"; };
+		7140C7B91F51D00600405582 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		71E43B551F518731007EDFDA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		71E43B571F51874E007EDFDA /* TopicsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsTableViewController.swift; sourceTree = "<group>"; };
 		71E43B591F518764007EDFDA /* TopicDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicDetailsViewController.swift; sourceTree = "<group>"; };
@@ -79,8 +83,8 @@
 			children = (
 				7105FE261F517E09003D8BD6 /* AppDelegate.swift */,
 				71E43B681F519BA9007EDFDA /* Constant.swift */,
-				71E43B641F5194A5007EDFDA /* ForumAPIClient.swift */,
-				71E43B661F519980007EDFDA /* SABERClient.swift */,
+				7140C7B91F51D00600405582 /* Extensions.swift */,
+				7140C7B21F51C90100405582 /* Networking */,
 				71E43B5F1F518EBC007EDFDA /* Model */,
 				71E43B5C1F51877C007EDFDA /* Views */,
 				71E43B5B1F51876F007EDFDA /* Controllers */,
@@ -88,6 +92,15 @@
 				7105FE321F517E09003D8BD6 /* Info.plist */,
 			);
 			path = SelecaoSABER;
+			sourceTree = "<group>";
+		};
+		7140C7B21F51C90100405582 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				71E43B641F5194A5007EDFDA /* ForumAPIClient.swift */,
+				71E43B661F519980007EDFDA /* SABERClient.swift */,
+			);
+			name = Networking;
 			sourceTree = "<group>";
 		};
 		71E43B5B1F51876F007EDFDA /* Controllers */ = {
@@ -105,6 +118,7 @@
 			children = (
 				7105FE2A1F517E09003D8BD6 /* Main.storyboard */,
 				7105FE2F1F517E09003D8BD6 /* LaunchScreen.storyboard */,
+				7140C7B71F51CB3E00405582 /* TopicTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -273,6 +287,8 @@
 				71E43B631F519081007EDFDA /* Content.swift in Sources */,
 				71E43B691F519BA9007EDFDA /* Constant.swift in Sources */,
 				71E43B5A1F518764007EDFDA /* TopicDetailsViewController.swift in Sources */,
+				7140C7BA1F51D00600405582 /* Extensions.swift in Sources */,
+				7140C7B81F51CB3E00405582 /* TopicTableViewCell.swift in Sources */,
 				7105FE271F517E09003D8BD6 /* AppDelegate.swift in Sources */,
 				71E43B581F51874E007EDFDA /* TopicsTableViewController.swift in Sources */,
 				71E43B5E1F518EB7007EDFDA /* Post.swift in Sources */,
