@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class TopicsTableViewController: UITableViewController {
 
@@ -20,6 +21,13 @@ class TopicsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+//        Alamofire.request("https://mobile.sabertecnologias.com.br/api_seletiva/users/", method: .post, parameters: ["chave": "hpbl220"]).responseJSON { response in
+//            if let json = response.result.value {
+//                print(json)
+//            }
+//        }
+        
     }
 
     override func didReceiveMemoryWarning() {
