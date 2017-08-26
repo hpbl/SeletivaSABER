@@ -1,5 +1,5 @@
 //
-//  TopicTableViewCell.swift
+//  MessageTableViewCell.swift
 //  SelecaoSABER
 //
 //  Created by Hilton Pintor Bezerra Leite on 26/08/17.
@@ -8,11 +8,12 @@
 
 import UIKit
 
-class TopicTableViewCell: ContentCell {
+class MessageTableViewCell: ContentCell {
 
-    @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,7 +32,10 @@ class TopicTableViewCell: ContentCell {
         }
         
         self.avatarImageView.image = UIImage(from: topic.avatar)
+        self.messageTextView.text = topic.message
         self.titleLabel.text = topic.title
         self.authorLabel.text = topic.author
     }
+
 }
+

@@ -12,6 +12,9 @@
 		7105FE2C1F517E09003D8BD6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7105FE2A1F517E09003D8BD6 /* Main.storyboard */; };
 		7105FE2E1F517E09003D8BD6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7105FE2D1F517E09003D8BD6 /* Assets.xcassets */; };
 		7105FE311F517E09003D8BD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7105FE2F1F517E09003D8BD6 /* LaunchScreen.storyboard */; };
+		71156B081F51F4BD0036FA82 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71156B071F51F4BD0036FA82 /* MessageTableViewCell.swift */; };
+		71156B0A1F51F4CB0036FA82 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71156B091F51F4CB0036FA82 /* CommentTableViewCell.swift */; };
+		71156B0D1F51F8160036FA82 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71156B0C1F51F8160036FA82 /* ContentCell.swift */; };
 		7140C7B81F51CB3E00405582 /* TopicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140C7B71F51CB3E00405582 /* TopicTableViewCell.swift */; };
 		7140C7BA1F51D00600405582 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140C7B91F51D00600405582 /* Extensions.swift */; };
 		7140C7BD1F51DD1C00405582 /* AddTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140C7BC1F51DD1B00405582 /* AddTopicViewController.swift */; };
@@ -33,6 +36,9 @@
 		7105FE2D1F517E09003D8BD6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7105FE301F517E09003D8BD6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7105FE321F517E09003D8BD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71156B071F51F4BD0036FA82 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		71156B091F51F4CB0036FA82 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		71156B0C1F51F8160036FA82 /* ContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		7140C7B71F51CB3E00405582 /* TopicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicTableViewCell.swift; sourceTree = "<group>"; };
 		7140C7B91F51D00600405582 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7140C7BC1F51DD1B00405582 /* AddTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTopicViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +102,17 @@
 			path = SelecaoSABER;
 			sourceTree = "<group>";
 		};
+		71156B0B1F51F5950036FA82 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				7140C7B71F51CB3E00405582 /* TopicTableViewCell.swift */,
+				71156B071F51F4BD0036FA82 /* MessageTableViewCell.swift */,
+				71156B091F51F4CB0036FA82 /* CommentTableViewCell.swift */,
+				71156B0C1F51F8160036FA82 /* ContentCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		7140C7B21F51C90100405582 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -121,7 +138,7 @@
 			children = (
 				7105FE2A1F517E09003D8BD6 /* Main.storyboard */,
 				7105FE2F1F517E09003D8BD6 /* LaunchScreen.storyboard */,
-				7140C7B71F51CB3E00405582 /* TopicTableViewCell.swift */,
+				71156B0B1F51F5950036FA82 /* Cells */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -289,7 +306,10 @@
 				71E43B651F5194A5007EDFDA /* ForumAPIClient.swift in Sources */,
 				7140C7BD1F51DD1C00405582 /* AddTopicViewController.swift in Sources */,
 				71E43B631F519081007EDFDA /* Content.swift in Sources */,
+				71156B0D1F51F8160036FA82 /* ContentCell.swift in Sources */,
 				71E43B691F519BA9007EDFDA /* Constant.swift in Sources */,
+				71156B0A1F51F4CB0036FA82 /* CommentTableViewCell.swift in Sources */,
+				71156B081F51F4BD0036FA82 /* MessageTableViewCell.swift in Sources */,
 				71E43B5A1F518764007EDFDA /* TopicDetailsViewController.swift in Sources */,
 				7140C7BA1F51D00600405582 /* Extensions.swift in Sources */,
 				7140C7B81F51CB3E00405582 /* TopicTableViewCell.swift in Sources */,

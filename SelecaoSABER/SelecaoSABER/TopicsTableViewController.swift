@@ -111,15 +111,30 @@ class TopicsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        
+        switch segue.identifier {
+        case "showTopicDetails"?:
+            guard let detailsVC = segue.destination as? TopicDetailsViewController else {
+                fatalError("esperava TopicDetailsViewController")
+            }
+            
+            guard let index = self.topicsTableView.indexPathForSelectedRow else {
+                fatalError("nenhuma célula selecionada")
+            }
+            
+            let selectedTopic = self.topics[index.row]
+            
+            detailsVC.topics.append(selectedTopic)
+
+        default:
+            break
+        }
     }
-    */
+    
     
     @IBAction func unwindFromAddTopic(sender: UIStoryboardSegue) {
         

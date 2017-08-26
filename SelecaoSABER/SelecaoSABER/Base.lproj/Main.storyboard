@@ -89,6 +89,7 @@
                                     <outlet property="authorLabel" destination="XWQ-JT-btl" id="2yH-cv-PX4"/>
                                     <outlet property="avatarImageView" destination="Aic-De-zQZ" id="XMa-4d-HrQ"/>
                                     <outlet property="titleLabel" destination="bS0-M7-iPR" id="IDb-uU-jQv"/>
+                                    <segue destination="yT6-Gc-9Wv" kind="show" identifier="showTopicDetails" id="13O-MH-w9h"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -106,7 +107,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="topicsTableView" destination="bOd-tF-zuo" id="pvT-B9-Eft"/>
-                        <segue destination="yT6-Gc-9Wv" kind="show" identifier="showTopicDetails" id="6rC-Iz-IVr"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r6v-Hw-iBn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -196,13 +196,99 @@
                     <view key="view" contentMode="scaleToFill" id="Doh-Mm-fVU">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DAa-sG-S7a">
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageCell" rowHeight="150" id="Sq3-zI-Nhq" customClass="MessageTableViewCell" customModule="SelecaoSABER" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="150"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sq3-zI-Nhq" id="7DO-oH-zI2">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="149.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hvi-Z3-dOX">
+                                                    <rect key="frame" x="8" y="15" width="50" height="60"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Título" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b97-2J-HBa">
+                                                    <rect key="frame" x="66" y="18" width="222" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Mensagem" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="99A-BG-HkI">
+                                                    <rect key="frame" x="14" y="79" width="298" height="63"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQA-VF-4KU">
+                                                    <rect key="frame" x="68" y="47" width="219" height="24"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.41960784309999999" green="0.80000000000000004" blue="0.48627450979999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="SQA-VF-4KU" id="Sxy-WM-ajX"/>
+                                            <outlet property="avatarImageView" destination="hvi-Z3-dOX" id="TMi-Ex-mWo"/>
+                                            <outlet property="messageTextView" destination="99A-BG-HkI" id="4Sg-fN-n6N"/>
+                                            <outlet property="titleLabel" destination="b97-2J-HBa" id="NWX-Us-wST"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CommentCell" rowHeight="100" id="FMs-k7-510" customClass="CommentTableViewCell" customModule="SelecaoSABER" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="178" width="320" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FMs-k7-510" id="XRl-Al-LBB">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hcp-zf-lqW">
+                                                    <rect key="frame" x="8" y="8" width="40" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydf-su-ZZW">
+                                                    <rect key="frame" x="8" y="60" width="77" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Comentário" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aga-xp-xsZ">
+                                                    <rect key="frame" x="93" y="8" width="219" height="84"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="authorLabel" destination="ydf-su-ZZW" id="1Oo-7O-Wee"/>
+                                            <outlet property="avatarImageView" destination="hcp-zf-lqW" id="ole-Mt-66m"/>
+                                            <outlet property="commentTextView" destination="aga-xp-xsZ" id="YxY-qU-Kmn"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Detalhes" id="VSR-Ls-auU"/>
+                    <connections>
+                        <outlet property="detailsTableView" destination="DAa-sG-S7a" id="UUL-pd-fHe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPK-rR-HeU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3645" y="137.5"/>
+            <point key="canvasLocation" x="3743" y="141"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2VO-QW-2H9">

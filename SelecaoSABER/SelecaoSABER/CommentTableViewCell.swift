@@ -1,5 +1,5 @@
 //
-//  TopicTableViewCell.swift
+//  CommentTableViewCell.swift
 //  SelecaoSABER
 //
 //  Created by Hilton Pintor Bezerra Leite on 26/08/17.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-class TopicTableViewCell: ContentCell {
+class CommentTableViewCell: ContentCell {
 
+    @IBOutlet weak var commentTextView: UITextView!
     @IBOutlet weak var authorLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var avatarImageView: UIImageView!
     
     override func awakeFromNib() {
@@ -26,12 +26,13 @@ class TopicTableViewCell: ContentCell {
     }
     
     override func setupInterface(with content: Content) {
-        guard let topic = content as? Post else {
-            fatalError("expected a Post object")
+        guard let comment = content as? Comment else {
+            fatalError("expected a Comment object")
         }
         
-        self.avatarImageView.image = UIImage(from: topic.avatar)
-        self.titleLabel.text = topic.title
-        self.authorLabel.text = topic.author
+        self.avatarImageView.image = UIImage(from: comment.avatar)
+        self.authorLabel.text = comment.author
+        self.commentTextView.text = comment.message
     }
+
 }
