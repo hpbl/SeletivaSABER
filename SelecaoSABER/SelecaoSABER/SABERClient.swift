@@ -36,7 +36,24 @@ class SABERClient: ForumAPIClient {
                         callback(posts)
                     }
                 } else {
-                    print("no response")
+                    fatalError("no response")
+                }
+        }
+    }
+    
+    func save(title: String, message: String, callback: @escaping (Int?) -> Void) {
+        let requestURL = Constant.endPoint + Constant.URI.createPost.rawValue
+        
+        let requestBody = ["title": title, "message": message]
+        
+        Alamofire.request(requestURL,
+                          method: .post,
+                          parameters: requestBody,
+                          headers: self.headers)
+            .responseJSON { response in
+                if let resultJSON = response.result.value as? [String: Int] {
+                        callback(resultJSON["id"])
+                    
                 }
         }
     }

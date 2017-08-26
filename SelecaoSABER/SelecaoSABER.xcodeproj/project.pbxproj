@@ -14,6 +14,7 @@
 		7105FE311F517E09003D8BD6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7105FE2F1F517E09003D8BD6 /* LaunchScreen.storyboard */; };
 		7140C7B81F51CB3E00405582 /* TopicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140C7B71F51CB3E00405582 /* TopicTableViewCell.swift */; };
 		7140C7BA1F51D00600405582 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140C7B91F51D00600405582 /* Extensions.swift */; };
+		7140C7BD1F51DD1C00405582 /* AddTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140C7BC1F51DD1B00405582 /* AddTopicViewController.swift */; };
 		71E43B561F518731007EDFDA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E43B551F518731007EDFDA /* LoginViewController.swift */; };
 		71E43B581F51874E007EDFDA /* TopicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E43B571F51874E007EDFDA /* TopicsTableViewController.swift */; };
 		71E43B5A1F518764007EDFDA /* TopicDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E43B591F518764007EDFDA /* TopicDetailsViewController.swift */; };
@@ -34,6 +35,7 @@
 		7105FE321F517E09003D8BD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7140C7B71F51CB3E00405582 /* TopicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicTableViewCell.swift; sourceTree = "<group>"; };
 		7140C7B91F51D00600405582 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		7140C7BC1F51DD1B00405582 /* AddTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTopicViewController.swift; sourceTree = "<group>"; };
 		71E43B551F518731007EDFDA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		71E43B571F51874E007EDFDA /* TopicsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsTableViewController.swift; sourceTree = "<group>"; };
 		71E43B591F518764007EDFDA /* TopicDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicDetailsViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				71E43B551F518731007EDFDA /* LoginViewController.swift */,
 				71E43B571F51874E007EDFDA /* TopicsTableViewController.swift */,
 				71E43B591F518764007EDFDA /* TopicDetailsViewController.swift */,
+				7140C7BC1F51DD1B00405582 /* AddTopicViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				71E43B561F518731007EDFDA /* LoginViewController.swift in Sources */,
 				71E43B611F518F57007EDFDA /* Comment.swift in Sources */,
 				71E43B651F5194A5007EDFDA /* ForumAPIClient.swift in Sources */,
+				7140C7BD1F51DD1C00405582 /* AddTopicViewController.swift in Sources */,
 				71E43B631F519081007EDFDA /* Content.swift in Sources */,
 				71E43B691F519BA9007EDFDA /* Constant.swift in Sources */,
 				71E43B5A1F518764007EDFDA /* TopicDetailsViewController.swift in Sources */,

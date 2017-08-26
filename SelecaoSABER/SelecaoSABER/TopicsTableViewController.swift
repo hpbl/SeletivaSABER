@@ -120,5 +120,22 @@ class TopicsTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func unwindFromAddTopic(sender: UIStoryboardSegue) {
+        
+        if let addTopicVC = sender.source as? AddTopicViewController {
+            if let newTopic = addTopicVC.newTopic {
+                self.webClient.save(title: newTopic.title,
+                                    message: newTopic.message,
+                                    callback: { (newId) in
+                                        guard newId != nil else {
+                                            fatalError("erro no salvamento")
+                                        }
+                                        
+                                        self.getPosts()
+                })
+            }
+        }
+    }
 
 }

@@ -13,4 +13,6 @@ protocol ForumAPIClient {
     var accessToken: String { get set }
     
     func getPosts(_ callback: @escaping ([Post]) -> Void)
+    
+    func save(title: String, message: String, callback: @escaping (Int?) -> Void) -> Void
 }
