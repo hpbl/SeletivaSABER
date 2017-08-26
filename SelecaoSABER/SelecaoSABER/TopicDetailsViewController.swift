@@ -19,6 +19,26 @@ class TopicDetailsViewController: UIViewController {
 
     
     @IBOutlet weak var detailsTableView: UITableView!
+    @IBOutlet weak var commentTextField: UITextField!
+    
+    @IBAction func sendComment(_ sender: UIButton) {
+        guard let newCommentMessage = self.commentTextField.text else {
+            fatalError("Escreva um comentário")
+        }
+        
+        if !newCommentMessage.isEmpty {
+            self.webClient.saveComment(message: newCommentMessage, on: self.topic, callback: { (id, tid) in
+                guard id != nil else {
+                    fatalError("não salvou o comentário")
+                }
+                
+                self.commentTextField.text = ""
+                self.getComments()
+                
+               // self.detailsTableView.scrollToRow(at: IndexPath(row: self.comments.count, section: 1), at: UITableViewScrollPosition.bottom, animated: true)
+            })
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

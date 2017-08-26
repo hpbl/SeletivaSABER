@@ -41,7 +41,7 @@ class SABERClient: ForumAPIClient {
         }
     }
     
-    func save(title: String, message: String, callback: @escaping (Int?) -> Void) {
+    func savePost(title: String, message: String, callback: @escaping (Int?) -> Void) {
         let requestURL = Constant.endPoint + Constant.URI.createPost.rawValue
         
         let requestBody = ["title": title, "message": message]
@@ -59,7 +59,7 @@ class SABERClient: ForumAPIClient {
     }
     
     func getComments(for post: Post, callback: @escaping ([Comment]) -> Void) {
-        let requestURL = Constant.endPoint + Constant.URI.forum.rawValue + "/" + String(post.id)
+        let requestURL = Constant.endPoint + Constant.URI.forum.rawValue + String(post.id)
         
         Alamofire.request(requestURL,
                           method: .get,
@@ -80,5 +80,22 @@ class SABERClient: ForumAPIClient {
                 }
         }
         
+    }
+    
+    func saveComment(message: String, on post: Post, callback: @escaping (Any?, Any?) -> Void) {
+        let requestURL = Constant.endPoint + Constant.URI.addComment.rawValue + String(post.id)
+        
+        Alamofire.request(requestURL,
+                          method: .post,
+                          parameters: ["message": message],
+                          headers: self.headers)
+            .responseJSON { response in
+                if let resultJSON = response.result.value as? [String: Any] {
+                    
+                    callback(resultJSON["id"], resultJSON["tid"])
+                } else {
+                    print("que houve?")
+                }
+        }
     }
 }

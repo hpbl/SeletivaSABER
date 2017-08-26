@@ -20,12 +20,16 @@ class Comment: Content {
     // initializing object from json
     override init(from json: [String: Any]) { //throws {
         
-        guard let tid = json["tid"] as? Int else {
-            //throw Constant.SerializationError.missing("id")
-            fatalError("erro de serialização do Comment")
-        }
+        if let tid = json["tid"] as? Int {
+            self.tid = tid
         
-        self.tid = tid
+        } else if let tidString = json["tid"] as? String,
+            let tid = Int(tidString)  {
+            self.tid = Int(tid)
+        
+        } else {
+            fatalError("Erro no tid")
+        }
         
         super.init(from: json)
     }

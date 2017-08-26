@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -198,7 +200,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DAa-sG-S7a">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="373"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MessageCell" rowHeight="150" id="Sq3-zI-Nhq" customClass="MessageTableViewCell" customModule="SelecaoSABER" customModuleProvider="target">
@@ -277,23 +279,43 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seu comentário..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FS6-Hk-Bh2">
+                                <rect key="frame" x="10" y="378" width="256" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dnb-E3-gfs">
+                                <rect key="frame" x="274" y="370.5" width="30" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <state key="normal" title="&gt;"/>
+                                <connections>
+                                    <action selector="sendComment:" destination="yT6-Gc-9Wv" eventType="touchUpInside" id="L5h-nZ-7QO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DAa-sG-S7a" firstAttribute="width" secondItem="Doh-Mm-fVU" secondAttribute="width" id="Bqr-vr-hqb"/>
-                            <constraint firstItem="DAa-sG-S7a" firstAttribute="top" secondItem="m1r-oi-vh8" secondAttribute="bottom" id="E7i-Nc-V2W"/>
-                            <constraint firstItem="DAa-sG-S7a" firstAttribute="centerY" secondItem="Doh-Mm-fVU" secondAttribute="centerY" id="RDR-e3-L98"/>
-                            <constraint firstItem="DAa-sG-S7a" firstAttribute="centerX" secondItem="Doh-Mm-fVU" secondAttribute="centerX" id="w0J-dG-Udu"/>
+                            <constraint firstItem="DAa-sG-S7a" firstAttribute="width" secondItem="Doh-Mm-fVU" secondAttribute="width" id="4db-Ik-QYc"/>
+                            <constraint firstItem="dnb-E3-gfs" firstAttribute="leading" secondItem="FS6-Hk-Bh2" secondAttribute="trailing" constant="8" id="7QW-y4-t3M"/>
+                            <constraint firstItem="dnb-E3-gfs" firstAttribute="centerY" secondItem="FS6-Hk-Bh2" secondAttribute="centerY" id="Vwc-t7-sMb"/>
+                            <constraint firstItem="DAa-sG-S7a" firstAttribute="top" secondItem="m1r-oi-vh8" secondAttribute="bottom" id="d7q-R8-IWv"/>
+                            <constraint firstItem="Wy8-Ma-cEv" firstAttribute="top" secondItem="FS6-Hk-Bh2" secondAttribute="bottom" constant="8" id="f9s-Mw-WNR"/>
+                            <constraint firstItem="FS6-Hk-Bh2" firstAttribute="top" secondItem="DAa-sG-S7a" secondAttribute="bottom" constant="5" id="fxP-0I-eZW"/>
+                            <constraint firstItem="DAa-sG-S7a" firstAttribute="centerX" secondItem="Doh-Mm-fVU" secondAttribute="centerX" id="hEy-CG-jb9"/>
+                            <constraint firstItem="FS6-Hk-Bh2" firstAttribute="width" secondItem="Doh-Mm-fVU" secondAttribute="width" multiplier="0.8" id="sZZ-Sw-VBL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dnb-E3-gfs" secondAttribute="trailing" id="yj4-VK-06z"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Detalhes" id="VSR-Ls-auU"/>
                     <connections>
+                        <outlet property="commentTextField" destination="FS6-Hk-Bh2" id="QSr-wX-ozt"/>
                         <outlet property="detailsTableView" destination="DAa-sG-S7a" id="UUL-pd-fHe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPK-rR-HeU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3743" y="141"/>
+            <point key="canvasLocation" x="3742.5" y="140"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2VO-QW-2H9">

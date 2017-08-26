@@ -138,14 +138,14 @@ class TopicsTableViewController: UITableViewController {
         
         if let addTopicVC = sender.source as? AddTopicViewController {
             if let newTopic = addTopicVC.newTopic {
-                self.webClient.save(title: newTopic.title,
-                                    message: newTopic.message,
-                                    callback: { (newId) in
-                                        guard newId != nil else {
-                                            fatalError("erro no salvamento")
-                                        }
+                self.webClient.savePost(title: newTopic.title,
+                                        message: newTopic.message,
+                                        callback: { (newId) in
+                                            guard newId != nil else {
+                                                fatalError("erro no salvamento")
+                                            }
                                         
-                                        self.getPosts()
+                                            self.getPosts()
                 })
             }
         }
