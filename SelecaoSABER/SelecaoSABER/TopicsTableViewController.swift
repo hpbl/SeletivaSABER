@@ -10,52 +10,63 @@ import UIKit
 import Alamofire
 
 class TopicsTableViewController: UITableViewController {
-
+    
+    // MARK: - Outlets
     @IBOutlet var topicsTableView: UITableView!
+    
+    // MARK: - Properties
+    var topics: [Post] = [] {
+        didSet {
+            self.topicsTableView.reloadData()
+        }
+    }
+    var webClient: ForumAPIClient = SABERClient()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.topicsTableView.delegate = self
+        self.topicsTableView.dataSource = self
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-//        Alamofire.request("https://mobile.sabertecnologias.com.br/api_seletiva/users/", method: .post, parameters: ["chave": "hpbl220"]).responseJSON { response in
-//            if let json = response.result.value {
-//                print(json)
-//            }
-//        }
-        
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.getPosts()
     }
+    
+    // MARK: - Webservice requests
+    func getPosts() {
+        self.webClient.getPosts { (returnedPosts) in
+            self.topics = returnedPosts
+        }
+    }
+    
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        // return the number of sections
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        // return the number of rows
+        return self.topics.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
-
+        // TODO: Add content to cell
+        
         return cell
+
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
