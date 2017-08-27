@@ -94,6 +94,11 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <activityIndicatorView key="tableFooterView" hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" id="Nbo-1q-bLm">
+                            <rect key="frame" x="0.0" y="108" width="320" height="37"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="color" red="0.38332378859999999" green="0.660184145" blue="0.27701601390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TopicCell" rowHeight="80" id="pTT-xl-SLf" customClass="TopicTableViewCell" customModule="SelecaoSABER" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="80"/>
@@ -144,6 +149,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="Nbo-1q-bLm" id="arO-OK-Awy"/>
                         <outlet property="topicsTableView" destination="bOd-tF-zuo" id="pvT-B9-Eft"/>
                     </connections>
                 </tableViewController>
@@ -324,6 +330,10 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Xev-Gv-XsJ">
+                                <rect key="frame" x="142" y="190" width="37" height="37"/>
+                                <color key="color" red="0.38332378859999999" green="0.660184145" blue="0.27701601390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Seu comentário..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FS6-Hk-Bh2">
                                 <rect key="frame" x="10" y="378" width="256" height="30"/>
                                 <nil key="textColor"/>
@@ -346,9 +356,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Xev-Gv-XsJ" firstAttribute="centerY" secondItem="Doh-Mm-fVU" secondAttribute="centerY" id="3L5-kn-9jx"/>
                             <constraint firstItem="DAa-sG-S7a" firstAttribute="width" secondItem="Doh-Mm-fVU" secondAttribute="width" id="4db-Ik-QYc"/>
                             <constraint firstItem="dnb-E3-gfs" firstAttribute="leading" secondItem="FS6-Hk-Bh2" secondAttribute="trailing" constant="8" id="7QW-y4-t3M"/>
                             <constraint firstItem="dnb-E3-gfs" firstAttribute="centerY" secondItem="FS6-Hk-Bh2" secondAttribute="centerY" id="Vwc-t7-sMb"/>
+                            <constraint firstItem="Xev-Gv-XsJ" firstAttribute="centerX" secondItem="Doh-Mm-fVU" secondAttribute="centerX" id="clk-5V-cmm"/>
                             <constraint firstItem="DAa-sG-S7a" firstAttribute="top" secondItem="m1r-oi-vh8" secondAttribute="bottom" id="d7q-R8-IWv"/>
                             <constraint firstItem="Wy8-Ma-cEv" firstAttribute="top" secondItem="FS6-Hk-Bh2" secondAttribute="bottom" constant="8" id="f9s-Mw-WNR"/>
                             <constraint firstItem="FS6-Hk-Bh2" firstAttribute="top" secondItem="DAa-sG-S7a" secondAttribute="bottom" constant="5" id="fxP-0I-eZW"/>
@@ -359,6 +371,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Detalhes" id="VSR-Ls-auU"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Xev-Gv-XsJ" id="KRU-07-e7q"/>
                         <outlet property="commentTextField" destination="FS6-Hk-Bh2" id="QSr-wX-ozt"/>
                         <outlet property="detailsTableView" destination="DAa-sG-S7a" id="UUL-pd-fHe"/>
                         <outlet property="sendButton" destination="dnb-E3-gfs" id="Z1W-7o-N3i"/>

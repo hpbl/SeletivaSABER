@@ -12,6 +12,7 @@ import Alamofire
 class TopicsTableViewController: UITableViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet var topicsTableView: UITableView!
     
     // MARK: - Properties
@@ -34,24 +35,31 @@ class TopicsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-
         self.getPosts()
     }
     
     // MARK: - Webservice requests
     func getPosts() {
+        self.activityIndicator.startAnimating()
+
         self.webClient.getPosts { returnedPosts, error in
+            
             if let returnedPosts = returnedPosts {
                 self.topics = returnedPosts
             } else if error != nil {
                 PopUpDelegate.showNoNetworkPopup(on: self, with: self.getPosts)
             }
+            
+            self.activityIndicator.stopAnimating()
         }
     }
     
     func save(newPost: NewPost) {
+        self.activityIndicator.startAnimating()
+
         self.webClient.savePost(newPost: newPost,
                                 callback: { (newId, error) in
+
                                     if newId != nil {
                                         self.getPosts()
                                     } else {
@@ -59,6 +67,8 @@ class TopicsTableViewController: UITableViewController {
                                                                            for: newPost,
                                                                            with: self.save(newPost:))
                                     }
+                                    self.activityIndicator.stopAnimating()
+
         })
     }
     

@@ -19,6 +19,7 @@ class TopicDetailsViewController: UIViewController {
     var formChecker: FormCheckerDelegate = FormChecker()
 
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var detailsTableView: UITableView!
     @IBOutlet weak var commentTextField: UITextField!
@@ -52,16 +53,23 @@ class TopicDetailsViewController: UIViewController {
     }
     
     func getComments() {
+        self.activityIndicator.startAnimating()
+
         self.webClient.getComments(for: self.topic) { (comments, error) in
+
             if let comments = comments {
                 self.comments = comments
             } else {
                 PopUpDelegate.showNoNetworkPopup(on: self, with: self.getComments)
             }
+            
+            self.activityIndicator.stopAnimating()
         }
     }
     
     func save(newComment: NewComment) {
+        self.activityIndicator.startAnimating()
+
         self.webClient.saveComment(newComment: newComment,
                                    callback: { (id, tid, error) in
                                     if id != nil {
@@ -73,6 +81,8 @@ class TopicDetailsViewController: UIViewController {
                                                                            for: newComment,
                                                                            with: self.save(newComment:))
                                     }
+                                    self.activityIndicator.stopAnimating()
+
                                     
                                     
         })
