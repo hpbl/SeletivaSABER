@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Célula responsável por ver a mensagem
+// do tópico selecionado
 class MessageTableViewCell: ContentCell {
 
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -26,6 +28,7 @@ class MessageTableViewCell: ContentCell {
         // Configure the view for the selected state
     }
     
+    // método do protocolo, onde atualizamos o conteúdo da interface
     override func setupInterface(with content: Content) {
         guard let topic = content as? Post else {
             fatalError("expected an object of type Post")

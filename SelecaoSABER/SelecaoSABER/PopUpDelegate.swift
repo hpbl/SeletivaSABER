@@ -9,8 +9,11 @@
 import PopupDialog
 import UIKit
 
+// classe responsável por gerar os popups da aplicação
 class PopUpDelegate {
     
+    // o pod PopupDialog permite fácil criação de popups
+    // passando o conteúdo textual e seus botões/ações
     class func showNoNetworkPopup(on viewController: UIViewController,
                                   with tryAgainAction: @escaping () -> ()) {
         let title = "Algo não está certo"
@@ -29,11 +32,15 @@ class PopUpDelegate {
         
         popup.addButtons([cancelButton, tryAgainButton])
         
+        // não deve ser mantido com mais de 2 botões
         popup.buttonAlignment = .horizontal
 
         viewController.present(popup, animated: true, completion: nil)
     }
     
+    
+    // quando acontece um erro ao salvar um novo Post,
+    // damos ao usuário a possibilidade de tentar novamente
     class func showSavingErrorPopop(on viewController: UIViewController,
                                     for post: NewPost,
                                     with tryAgainAction: @escaping (NewPost) -> ()) {
@@ -54,11 +61,14 @@ class PopUpDelegate {
         
         popup.addButtons([cancelButton, tryAgainButton])
         
+        // não deve ser mantido com mais de 2 botões
         popup.buttonAlignment = .horizontal
         
         viewController.present(popup, animated: true, completion: nil)
     }
     
+    // quando acontece um erro ao salvar um novo Comment,
+    // damos ao usuário a possibilidade de tentar novamente
     class func showSavingErrorPopop(on viewController: UIViewController,
                                     for newComment: NewComment,
                                     with tryAgainAction: @escaping (NewComment) -> ()) {
@@ -79,6 +89,7 @@ class PopUpDelegate {
         
         popup.addButtons([cancelButton, tryAgainButton])
         
+        // não deve ser mantido com mais de 2 botões
         popup.buttonAlignment = .horizontal
         
         viewController.present(popup, animated: true, completion: nil)

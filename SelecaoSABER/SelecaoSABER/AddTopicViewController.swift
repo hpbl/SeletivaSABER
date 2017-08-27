@@ -10,15 +10,19 @@ import UIKit
 
 class AddTopicViewController: UIViewController {
     
+    // MARK: - Properties
     var newTopic: NewPost?
     var formChecker: FormCheckerDelegate = FormChecker()
+    
 
+    // MARK: - Outlets
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var titleTextField: UITextField!
     
     @IBAction func save(_ sender: UIBarButtonItem) {
-        
+        // uso de force unwrapping pois o FormCheckerDelegate
+        // garante que haverá texto antes da ativação do botão
         self.newTopic = (title: self.titleTextField.text!,
                          message: self.messageTextView.text)
         
@@ -27,10 +31,14 @@ class AddTopicViewController: UIViewController {
         
     }
     
+    
+    // MARK: - Actions
     @IBAction func cancel(_ sender: UIBarButtonItem) {
         self.dismiss(animated: true, completion: nil)
     }
     
+    
+    // MARK: - Ciclo de vida da View
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +50,7 @@ class AddTopicViewController: UIViewController {
 
     }
     
+    // MARK: - Customização da interface
     func addBorder(to textView: UITextView) {
         textView.layer.borderColor = Constant.Color.textViewBorder.cgColor
         textView.layer.borderWidth = 0.5

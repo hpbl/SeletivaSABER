@@ -8,6 +8,8 @@
 
 import UIKit
 
+// superclasse Content abstrai o que existe de comum
+// entre um Tópico e um Comentário
 class Content {
     var id: Int
     var timestamp: Int
@@ -31,7 +33,8 @@ class Content {
         }
     }
     
-    // initializing object from json
+    // a inicialização também pode ser feita através de um JSON,
+    // porém existe o risco de ser falha
     init?(from json: [String: Any]) {
         guard let id = json["id"] as? Int,
             let timestamp = json["timestamp"] as? Int,
@@ -47,6 +50,8 @@ class Content {
         self.avatar = avatar
         self.message = message
         
+        // Como as imagens são armazenadas na internet,
+        // é necessário uma alternativa caso não possam ser acessadas
         if let avatarImage = UIImage(from: self.avatar) {
             self.avatarImage = avatarImage
         } else {

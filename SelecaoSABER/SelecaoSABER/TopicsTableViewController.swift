@@ -11,34 +11,33 @@ import Alamofire
 
 class TopicsTableViewController: UITableViewController {
     
-    // MARK: - Outlets
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet var topicsTableView: UITableView!
-    
     // MARK: - Properties
     var topics: [Post] = [] {
         didSet {
             self.topicsTableView.reloadData()
         }
     }
-    var webClient: DataProvider = SABERClient()
-
+    var webClient: DataProvider = SABERClient.shared
     
+    
+    // MARK: - Outlets
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var topicsTableView: UITableView!
+    
+
+    // MARK: - Ciclo de vida da View
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.topicsTableView.delegate = self
         self.topicsTableView.dataSource = self
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
         self.getPosts()
     }
     
-    // MARK: - Webservice requests
+    
+    // MARK: - Métodos do DataProvider
     func getPosts() {
         self.activityIndicator.startAnimating()
 
@@ -72,9 +71,8 @@ class TopicsTableViewController: UITableViewController {
         })
     }
     
-
-    // MARK: - Table view data source
-
+    
+    // MARK: - Métodos da Table View
     override func numberOfSections(in tableView: UITableView) -> Int {
         // return the number of sections
         return 1
@@ -104,7 +102,8 @@ class TopicsTableViewController: UITableViewController {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        
+        // antes de ir para a tela de detalhes de um tópico,
+        // passamos o tópico escolhido para o próximo View Controller
         switch segue.identifier {
         case "showTopicDetails"?:
             guard let detailsVC = segue.destination as? TopicDetailsViewController else {
@@ -122,7 +121,7 @@ class TopicsTableViewController: UITableViewController {
         }
     }
     
-    
+    // ao retornar do AddTopicViewController salvamos o novo post
     @IBAction func unwindFromAddTopic(sender: UIStoryboardSegue) {
         
         if let addTopicVC = sender.source as? AddTopicViewController {

@@ -8,6 +8,7 @@
 
 import Foundation
 
+// representação dos comentários na aplicação
 class Comment: Content {
     var tid: Int
     
@@ -17,12 +18,15 @@ class Comment: Content {
         super.init(id: id, timestamp: timestamp, author: author, avatar: avatar, message: message)
     }
     
-    // initializing object from json
     override init?(from json: [String: Any]) {
-        
+        // Comentários já existentes no servidor
+        // retornam um tid do tipo Int
         if let tid = json["tid"] as? Int {
             self.tid = tid
         
+        // Comentários criados na aplicação quando
+        // retornados pelo servidor apresrntam um tid
+        // do tipo String
         } else if let tidString = json["tid"] as? String,
             let tid = Int(tidString)  {
             self.tid = Int(tid)
@@ -34,3 +38,7 @@ class Comment: Content {
         super.init(from: json)
     }
 }
+
+// o alias NewComment servirá para agrupar os dados
+// que montam um novo Comment, antes de serem enviados ao servidor
+typealias NewComment = (message: String, post: Post)

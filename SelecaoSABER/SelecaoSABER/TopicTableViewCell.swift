@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Célula que mostra resumo dos tópicos
 class TopicTableViewCell: ContentCell {
 
     @IBOutlet weak var authorLabel: UILabel!
@@ -25,6 +26,7 @@ class TopicTableViewCell: ContentCell {
         // Configure the view for the selected state
     }
     
+    // método do protocolo, onde atualizamos o conteúdo da interface
     override func setupInterface(with content: Content) {
         guard let topic = content as? Post else {
             fatalError("expected an object of type Post")

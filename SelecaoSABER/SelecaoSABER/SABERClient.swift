@@ -10,14 +10,25 @@ import Foundation
 import Alamofire
 
 class SABERClient: DataProvider {
-    var accessToken: String = "4847f8cd66020a31d57c0a7d26f6a82e1fd992dd"
     
+    // padrão de projeto Singleton
+    // para que as requisições sejam feitas
+    // pela mesma instância desta classe (mesmo token)
+    static let shared = SABERClient()
+    
+    // init privado evitará inicialização
+    // de outro objeto desta classe fora da mesma
+    private init() {}
+    
+    var accessToken: String = ""
     var headers: HTTPHeaders {
         get {
             return ["Authorization": "Bearer \(self.accessToken)"]
         }
     }
     
+    // O pod AlamoFire permite requisições flexíveis,
+    // cuja resposta em JSON é tratada e enviada para o callback
     func getPosts(_ callback: @escaping ([Post]?, Error?) -> Void) {
         let requestURL = Constant.endPoint + Constant.URI.forum.rawValue
         
@@ -26,6 +37,7 @@ class SABERClient: DataProvider {
                           headers: self.headers)
             .responseJSON  { response in
                 switch (response.result) {
+                    
                 case .success(let value):
                     if let resultJSON = value as? [String: [Any]] {
                         
@@ -39,12 +51,15 @@ class SABERClient: DataProvider {
                             callback(posts, nil)
                         }
                     }
+                    
                 case .failure(let error):
                     callback(nil, error)
                 }
         }
     }
     
+    // No Alamofire, o corpo da requisição (caso exista)
+    // deve ser colocado como parameters da requisição
     func savePost(newPost: NewPost, callback: @escaping (Int?, Error?) -> Void) {
         let requestURL = Constant.endPoint + Constant.URI.createPost.rawValue
         
@@ -58,6 +73,9 @@ class SABERClient: DataProvider {
                 switch (response.result) {
                 
                 case .success(let value):
+                    
+                    /* No caso da criação de um novo post, o id nos
+                     indica que foi feito salvamento com sucesso*/
                     if let resultJSON = value as? [String: Int] {
                         callback(resultJSON["id"], nil)
                         
@@ -112,7 +130,7 @@ class SABERClient: DataProvider {
                     
                 case .success(let value):
                     if let resultJSON = value as? [String: Any] {
-                        
+                        // novamente os ids indicam sucesso
                         callback(resultJSON["id"], resultJSON["tid"], nil)
                     }
                     
@@ -131,6 +149,7 @@ class SABERClient: DataProvider {
                 case .success(let value):
                     if let json = value as? [String: Any] {
                         if let token = json["apiToken"] as? String {
+                            // guardamos o novo token recebido
                             self.accessToken = token
                         }
                         callback(json["apiToken"] as? String, nil)

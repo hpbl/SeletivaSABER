@@ -8,6 +8,7 @@
 
 import UIKit
 
+// célula que mostra um comentário em um tópico
 class CommentTableViewCell: ContentCell {
 
     @IBOutlet weak var commentTextView: UITextView!
@@ -25,6 +26,7 @@ class CommentTableViewCell: ContentCell {
         // Configure the view for the selected state
     }
     
+    // método do protocolo, onde atualizamos o conteúdo da interface
     override func setupInterface(with content: Content) {
         guard let comment = content as? Comment else {
             fatalError("expected an object of type Comment")

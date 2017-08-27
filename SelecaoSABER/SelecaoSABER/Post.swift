@@ -8,6 +8,7 @@
 
 import Foundation
 
+// A classe Post descreve um Tópico na aplicação
 class Post: Content {
     var title: String
     
@@ -18,7 +19,7 @@ class Post: Content {
     }
     
     
-    // initializing object from json
+    // incialização falível por JSON
     override init?(from json: [String: Any]) {
         
         guard let title = json["title"] as? String else {
@@ -30,3 +31,7 @@ class Post: Content {
         super.init(from: json)
     }
 }
+
+// o alias NewPost servirá para agrupar os dados
+// que montam um novo Post, antes de serem enviados ao servidor
+typealias NewPost = (title: String, message: String)

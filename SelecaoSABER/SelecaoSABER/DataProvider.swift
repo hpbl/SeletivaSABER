@@ -8,7 +8,7 @@
 
 import Foundation
 
-
+// abstração da camda de requisição/persistência dos dados
 protocol DataProvider {
     var accessToken: String { get set }
     

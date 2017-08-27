@@ -10,6 +10,11 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    // MARK: - Propriedades
+    var webClient: DataProvider = SABERClient.shared
+    var formChecker: FormCheckerDelegate = FormChecker()
+    
+    
     // MARK: - Outlets
     @IBOutlet weak var invalidKeyLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -17,15 +22,15 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var keyTextField: UITextField!
     
-    // MARK: - Properties
-    var webClient: DataProvider = SABERClient()
-    var formChecker: FormCheckerDelegate = FormChecker()
     
     // MARK: - Actions
     @IBAction func login(_ sender: UIButton) {
+        // ao fazer login é necessário gerar um token de acesso
         self.generateToken()
     }
     
+    
+    // MARK: - Ciclo de vida da View
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,12 +38,9 @@ class LoginViewController: UIViewController {
                                      button: self.loginButton,
                                      barButton: nil)
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    
+    // MARK: - Métodos do DataProvider
     func generateToken() {
         self.webClient.generateToken(from: self.keyTextField.text!) {
             token, error in
@@ -50,6 +52,7 @@ class LoginViewController: UIViewController {
                 PopUpDelegate.showNoNetworkPopup(on: self,
                                                  with: self.generateToken)
             } else {
+                // mensagem de feedback ao usuário
                 self.invalidKeyLabel.isHidden = false
             }
             self.activityIndicator.stopAnimating()
@@ -57,6 +60,8 @@ class LoginViewController: UIViewController {
         }
     }
     
+    
+    // MARK: - Atualização da interface
     func waitAsyncRequest() {
         self.activityIndicator.startAnimating()
         self.loginButton.isEnabled = false

@@ -10,6 +10,8 @@ import UIKit
 
 extension UIImage {
     
+    // como imagens vem do servidor no formato de uma URl,
+    // precisamos de uma forma fácil de criar uma UIImage a partir da URL
     convenience init?(from url: String) {
         
         guard let url = URL(string: url),
@@ -21,6 +23,3 @@ extension UIImage {
         self.init(data: data)
     }
 }
-
-typealias NewPost = (title: String, message: String)
-typealias NewComment = (message: String, post: Post)

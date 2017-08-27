@@ -18,6 +18,7 @@ struct Constant {
         case reset = "/users/reset/"
     }
     
+    // cores que serão reutilizadas na aplicação
     struct Color {
         static let textViewBorder = UIColor(red:204.0/255.0,
                                              green:204.0/255.0,

@@ -112,10 +112,10 @@
 		71156B0B1F51F5950036FA82 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				71156B0C1F51F8160036FA82 /* ContentCell.swift */,
 				7140C7B71F51CB3E00405582 /* TopicTableViewCell.swift */,
 				71156B071F51F4BD0036FA82 /* MessageTableViewCell.swift */,
 				71156B091F51F4CB0036FA82 /* CommentTableViewCell.swift */,
-				71156B0C1F51F8160036FA82 /* ContentCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
