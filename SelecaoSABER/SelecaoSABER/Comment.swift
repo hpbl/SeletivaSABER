@@ -18,7 +18,7 @@ class Comment: Content {
     }
     
     // initializing object from json
-    override init(from json: [String: Any]) { //throws {
+    override init?(from json: [String: Any]) {
         
         if let tid = json["tid"] as? Int {
             self.tid = tid
@@ -28,7 +28,7 @@ class Comment: Content {
             self.tid = Int(tid)
         
         } else {
-            fatalError("Unexpected value type for jey \"tid\" on JSON")
+            return nil
         }
         
         super.init(from: json)

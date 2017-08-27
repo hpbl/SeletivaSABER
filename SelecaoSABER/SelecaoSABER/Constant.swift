@@ -18,11 +18,6 @@ struct Constant {
         case reset = "/users/reset/"
     }
     
-    enum SerializationError: Error {
-        case missing(String)
-        case invalid(String, Any)
-    }
-    
     struct Color {
         static let textViewBorder = UIColor(red:204.0/255.0,
                                              green:204.0/255.0,

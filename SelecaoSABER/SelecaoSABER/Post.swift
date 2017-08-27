@@ -19,12 +19,10 @@ class Post: Content {
     
     
     // initializing object from json
-    override init(from json: [String: Any]) { //throws {
+    override init?(from json: [String: Any]) {
         
         guard let title = json["title"] as? String else {
-                //throw Constant.SerializationError.missing("id")
-                //TODO: TRATAR ERRO de serialização
-                fatalError("erro de serialização do Post")
+                return nil
         }
         
         self.title = title

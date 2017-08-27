@@ -32,15 +32,13 @@ class Content {
     }
     
     // initializing object from json
-    init(from json: [String: Any]) { //throws {
+    init?(from json: [String: Any]) {
         guard let id = json["id"] as? Int,
             let timestamp = json["timestamp"] as? Int,
             let author = json["author"] as? String,
             let avatar = json["avatar"] as? String,
             let message = json["message"] as? String else {
-                //throw Constant.SerializationError.missing("id")
-                //TODO: TRATAR ERRO DE serialização
-                fatalError("erro de serialização do Post")
+                return nil
         }
         
         self.id = id

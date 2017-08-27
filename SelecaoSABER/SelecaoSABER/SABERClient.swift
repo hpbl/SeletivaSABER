@@ -32,7 +32,9 @@ class SABERClient: DataProvider {
                         if let postsJSON = resultJSON["posts"] as? [[String: Any]] {
                             var posts: [Post] = []
                             for postJSON in postsJSON {
-                                posts.append(Post(from: postJSON))
+                                if let post = Post(from: postJSON) {
+                                    posts.append(post)
+                                }
                             }
                             callback(posts, nil)
                         }
@@ -82,7 +84,9 @@ class SABERClient: DataProvider {
                         if let commentsJSON = resultJSON["comments"] as? [[String: Any]] {
                             var comments: [Comment] = []
                             for commentJSON in commentsJSON {
-                                comments.append(Comment(from: commentJSON))
+                                if let comment = Comment(from: commentJSON) {
+                                    comments.append(comment)
+                                }
                             }
                             
                             callback(comments, nil)
