@@ -34,6 +34,7 @@ class Content {
             let avatar = json["avatar"] as? String,
             let message = json["message"] as? String else {
                 //throw Constant.SerializationError.missing("id")
+                //TODO: TRATAR ERRO
                 fatalError("erro de serialização do Post")
         }
         

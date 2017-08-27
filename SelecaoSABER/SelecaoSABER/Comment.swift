@@ -28,7 +28,7 @@ class Comment: Content {
             self.tid = Int(tid)
         
         } else {
-            fatalError("Erro no tid")
+            fatalError("Unexpected value type for jey \"tid\" on JSON")
         }
         
         super.init(from: json)

@@ -27,7 +27,7 @@ class CommentTableViewCell: ContentCell {
     
     override func setupInterface(with content: Content) {
         guard let comment = content as? Comment else {
-            fatalError("expected a Comment object")
+            fatalError("expected an object of type Comment")
         }
         
         self.avatarImageView.image = comment.avatarImage

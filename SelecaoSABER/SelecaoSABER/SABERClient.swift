@@ -36,6 +36,7 @@ class SABERClient: DataProvider {
                         callback(posts)
                     }
                 } else {
+                    //TODO: TRATAR ERRO
                     fatalError("no response")
                 }
         }
@@ -76,6 +77,7 @@ class SABERClient: DataProvider {
                         callback(comments)
                     }
                 } else {
+                    //TODO: TRATAR ERRO
                     fatalError("no response")
                 }
         }
@@ -108,8 +110,6 @@ class SABERClient: DataProvider {
                         self.accessToken = token
                     }
                     callback(json["apiToken"] as? String)
-                } else {
-                    fatalError("retorno inesperado")
                 }
         }
     }

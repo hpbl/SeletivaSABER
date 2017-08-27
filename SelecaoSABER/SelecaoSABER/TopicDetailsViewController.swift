@@ -32,6 +32,7 @@ class TopicDetailsViewController: UIViewController {
                                        on: self.topic,
                                        callback: { (id, tid) in
                                         guard id != nil else {
+                                            //TODO: TRATAR ERRO
                                             fatalError("não salvou o comentário")
                                         }
                                         
@@ -91,7 +92,7 @@ extension TopicDetailsViewController: UITableViewDelegate,
         }
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? ContentCell else {
-            fatalError("Célula de tipo inesperado")
+            return UITableViewCell()
         }
         
         cell.setupInterface(with: cellContent)

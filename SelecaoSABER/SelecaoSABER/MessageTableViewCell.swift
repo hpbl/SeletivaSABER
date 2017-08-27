@@ -28,7 +28,7 @@ class MessageTableViewCell: ContentCell {
     
     override func setupInterface(with content: Content) {
         guard let topic = content as? Post else {
-            fatalError("expected a Post object")
+            fatalError("expected an object of type Post")
         }
         
         self.avatarImageView.image = topic.avatarImage

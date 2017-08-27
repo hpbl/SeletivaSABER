@@ -64,7 +64,7 @@ class TopicsTableViewController: UITableViewController {
         // TODO: Add content to cell
         
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath) as? TopicTableViewCell else {
-            fatalError("célula com tipo estranho")
+            return UITableViewCell()
         }
         
         let currentTopic = self.topics[indexPath.row]
@@ -119,11 +119,11 @@ class TopicsTableViewController: UITableViewController {
         switch segue.identifier {
         case "showTopicDetails"?:
             guard let detailsVC = segue.destination as? TopicDetailsViewController else {
-                fatalError("esperava TopicDetailsViewController")
+                fatalError("expected segue destination to be of type TopicDetailsViewController")
             }
             
             guard let index = self.topicsTableView.indexPathForSelectedRow else {
-                fatalError("nenhuma célula selecionada")
+                fatalError("couldn't find indexPath for selected row")
             }
             
             detailsVC.topic = self.topics[index.row]
@@ -142,6 +142,7 @@ class TopicsTableViewController: UITableViewController {
                                         message: newTopic.message,
                                         callback: { (newId) in
                                             guard newId != nil else {
+                                                //TODO: TRATAR ERRO
                                                 fatalError("erro no salvamento")
                                             }
                                         
