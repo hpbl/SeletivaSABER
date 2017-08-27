@@ -6,7 +6,7 @@
 //  Copyright © 2017 Hilton Pintor. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Content {
     var id: Int
@@ -14,6 +14,7 @@ class Content {
     var author: String
     var avatar: String
     var message: String
+    var avatarImage: UIImage
     
     init(id: Int, timestamp: Int, author: String, avatar: String, message: String) {
         
@@ -22,6 +23,7 @@ class Content {
         self.author = author
         self.avatar = avatar
         self.message = message
+        self.avatarImage = UIImage(from: self.avatar)
     }
     
     // initializing object from json
@@ -40,5 +42,6 @@ class Content {
         self.author = author
         self.avatar = avatar
         self.message = message
+        self.avatarImage = UIImage(from: self.avatar)
     }
 }

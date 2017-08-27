@@ -30,7 +30,7 @@ class CommentTableViewCell: ContentCell {
             fatalError("expected a Comment object")
         }
         
-        self.avatarImageView.image = UIImage(from: comment.avatar)
+        self.avatarImageView.image = comment.avatarImage
         self.authorLabel.text = comment.author
         self.commentTextView.text = comment.message
     }

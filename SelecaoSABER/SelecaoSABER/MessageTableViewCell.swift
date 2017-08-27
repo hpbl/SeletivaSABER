@@ -31,7 +31,7 @@ class MessageTableViewCell: ContentCell {
             fatalError("expected a Post object")
         }
         
-        self.avatarImageView.image = UIImage(from: topic.avatar)
+        self.avatarImageView.image = topic.avatarImage
         self.messageTextView.text = topic.message
         self.titleLabel.text = topic.title
         self.authorLabel.text = topic.author
