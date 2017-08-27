@@ -22,6 +22,9 @@ class TopicDetailsViewController: UIViewController {
     @IBOutlet weak var commentTextField: UITextField!
     
     @IBAction func sendComment(_ sender: UIButton) {
+        self.commentTextField.resignFirstResponder()
+        
+        
         guard let newCommentMessage = self.commentTextField.text else {
             fatalError("Escreva um comentário")
         }
