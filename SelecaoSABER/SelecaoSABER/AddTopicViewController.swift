@@ -10,7 +10,7 @@ import UIKit
 
 class AddTopicViewController: UIViewController {
     
-    var newTopic: (title: String, message: String)?
+    var newTopic: NewPost?
     var formChecker: FormCheckerDelegate = FormChecker()
 
     @IBOutlet weak var saveButton: UIBarButtonItem!

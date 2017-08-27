@@ -21,3 +21,5 @@ extension UIImage {
         self.init(data: data)
     }
 }
+
+typealias NewPost = (title: String, message: String)

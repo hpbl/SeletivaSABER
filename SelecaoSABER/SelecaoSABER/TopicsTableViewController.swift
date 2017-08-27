@@ -49,6 +49,20 @@ class TopicsTableViewController: UITableViewController {
         }
     }
     
+    func save(newPost: NewPost) {
+        self.webClient.savePost(title: newPost.title,
+                                message: newPost.message,
+                                callback: { (newId, error) in
+                                    if newId != nil {
+                                        self.getPosts()
+                                    } else {
+                                        PopUpDelegate.showSavingErrorPopop(on: self,
+                                                                           for: newPost,
+                                                                           with: self.save(newPost:))
+                                    }
+        })
+    }
+    
 
     // MARK: - Table view data source
 
@@ -77,42 +91,6 @@ class TopicsTableViewController: UITableViewController {
 
     }
     
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -140,16 +118,7 @@ class TopicsTableViewController: UITableViewController {
         
         if let addTopicVC = sender.source as? AddTopicViewController {
             if let newTopic = addTopicVC.newTopic {
-                self.webClient.savePost(title: newTopic.title,
-                                        message: newTopic.message,
-                                        callback: { (newId) in
-                                            guard newId != nil else {
-                                                //TODO: TRATAR ERRO
-                                                fatalError("erro no salvamento")
-                                            }
-                                        
-                                            self.getPosts()
-                })
+                self.save(newPost: newTopic)
             }
         }
     }

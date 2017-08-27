@@ -33,4 +33,29 @@ class PopUpDelegate {
 
         viewController.present(popup, animated: true, completion: nil)
     }
+    
+    class func showSavingErrorPopop(on viewController: UIViewController,
+                                    for post: NewPost,
+                                    with tryAgainAction: @escaping (NewPost) -> ()) {
+        
+        let title = "Não deu pra salvar o tópico"
+        let message = "Verifique sua conexão com a internet e tente novamente"
+        
+        let popup = PopupDialog(title: title, message: message)
+        
+        // Create buttons
+        let cancelButton = CancelButton(title: "cancelar") {
+            popup.dismiss(animated: true, completion: nil)
+        }
+        
+        let tryAgainButton = DefaultButton(title: "tentar novamente") {
+            tryAgainAction(post)
+        }
+        
+        popup.addButtons([cancelButton, tryAgainButton])
+        
+        popup.buttonAlignment = .horizontal
+        
+        viewController.present(popup, animated: true, completion: nil)
+    }
 }

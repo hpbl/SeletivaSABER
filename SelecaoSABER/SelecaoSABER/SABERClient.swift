@@ -43,7 +43,7 @@ class SABERClient: DataProvider {
         }
     }
     
-    func savePost(title: String, message: String, callback: @escaping (Int?) -> Void) {
+    func savePost(title: String, message: String, callback: @escaping (Int?, Error?) -> Void) {
         let requestURL = Constant.endPoint + Constant.URI.createPost.rawValue
         
         let requestBody = ["title": title, "message": message]
@@ -53,9 +53,16 @@ class SABERClient: DataProvider {
                           parameters: requestBody,
                           headers: self.headers)
             .responseJSON { response in
-                if let resultJSON = response.result.value as? [String: Int] {
-                        callback(resultJSON["id"])
+                switch (response.result) {
+                
+                case .success(let value):
+                    if let resultJSON = value as? [String: Int] {
+                        callback(resultJSON["id"], nil)
+                        
+                    }
                     
+                case .failure(let error):
+                    callback(nil, error)
                 }
         }
     }
