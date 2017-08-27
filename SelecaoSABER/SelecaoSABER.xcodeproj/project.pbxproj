@@ -197,6 +197,7 @@
 				7105FE211F517E08003D8BD6 /* Resources */,
 				063FD0BDF2FE165A965570B9 /* [CP] Embed Pods Frameworks */,
 				5C7C5A12AD0AA16209FBCBD7 /* [CP] Copy Pods Resources */,
+				71FB3F841F531E9500E6AD43 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -308,6 +309,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SelecaoSABER/Pods-SelecaoSABER-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		71FB3F841F531E9500E6AD43 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"searching ${SRCROOT} for ${TAGS}\"\nfind \"${SRCROOT}\" \\( -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
