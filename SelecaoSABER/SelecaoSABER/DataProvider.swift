@@ -20,5 +20,5 @@ protocol DataProvider {
     
     func saveComment(message: String, on post: Post, callback: @escaping (Any?, Any?) -> Void)
     
-    func generateToken(from key: String, callback: @escaping (String?) -> Void)
+    func generateToken(from key: String, callback: @escaping (String?, Error?) -> Void)
 }

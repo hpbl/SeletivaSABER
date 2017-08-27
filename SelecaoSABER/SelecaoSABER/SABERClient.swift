@@ -101,15 +101,21 @@ class SABERClient: DataProvider {
         }
     }
     
-    func generateToken(from key: String, callback: @escaping (String?) -> Void) {
+    func generateToken(from key: String, callback: @escaping (String?, Error?) -> Void) {
         Alamofire.request(Constant.endPoint + Constant.URI.reset.rawValue + key,
                           method: .post)
             .responseJSON { response in
-                if let json = response.result.value as? [String: Any] {
-                    if let token = json["apiToken"] as? String {
-                        self.accessToken = token
+                
+                switch (response.result) {
+                case .success(let value):
+                    if let json = response.result.value as? [String: Any] {
+                        if let token = json["apiToken"] as? String {
+                            self.accessToken = token
+                        }
+                        callback(json["apiToken"] as? String, nil)
                     }
-                    callback(json["apiToken"] as? String)
+                case .failure(let error):
+                    callback(nil, error)
                 }
         }
     }

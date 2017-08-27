@@ -25,15 +25,20 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: UIButton) {
         
         self.webClient.generateToken(from: self.keyTextField.text!) {
-            token in
+            token, error in
             self.waitAsyncRequest()
             if token != nil {
-                self.finishedWaiting(true)
                 self.performSegue(withIdentifier: "LoginToTopics",
                                   sender: self)
+            } else if error != nil {
+                PopUpDelegate.showNoNetworkPopup(on: self)
             } else {
-                self.finishedWaiting(false)
+                self.invalidKeyLabel.isHidden = false
             }
+            self.activityIndicator.stopAnimating()
+            self.loginButton.isEnabled = true
+
+
         }
     }
     
@@ -43,7 +48,6 @@ class LoginViewController: UIViewController {
         self.formChecker.setDelegate(for: [self.keyTextField],
                                      button: self.loginButton,
                                      barButton: nil)
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,14 +59,5 @@ class LoginViewController: UIViewController {
         self.activityIndicator.startAnimating()
         self.loginButton.isEnabled = false
         self.invalidKeyLabel.isHidden = true
-    }
-    
-    func finishedWaiting(_ success: Bool) {
-        self.activityIndicator.stopAnimating()
-        
-        if !success {
-            self.loginButton.isEnabled = true
-            self.invalidKeyLabel.isHidden = false
-        }
     }
 }

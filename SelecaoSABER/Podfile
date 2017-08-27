@@ -5,4 +5,5 @@ use_frameworks!
 target 'SelecaoSABER' do
     pod 'Alamofire', '~> 4.4'
     pod 'IQKeyboardManagerSwift', '4.0.10'
+    pod 'PopupDialog', '~> 0.5'
 end

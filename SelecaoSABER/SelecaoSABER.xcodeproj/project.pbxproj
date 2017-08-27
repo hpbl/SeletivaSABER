@@ -18,6 +18,7 @@
 		7140C7B81F51CB3E00405582 /* TopicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140C7B71F51CB3E00405582 /* TopicTableViewCell.swift */; };
 		7140C7BA1F51D00600405582 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140C7B91F51D00600405582 /* Extensions.swift */; };
 		7140C7BD1F51DD1C00405582 /* AddTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7140C7BC1F51DD1B00405582 /* AddTopicViewController.swift */; };
+		714B1DF91F5336CE0012EE7F /* PopUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B1DF81F5336CE0012EE7F /* PopUpDelegate.swift */; };
 		71E43B561F518731007EDFDA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E43B551F518731007EDFDA /* LoginViewController.swift */; };
 		71E43B581F51874E007EDFDA /* TopicsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E43B571F51874E007EDFDA /* TopicsTableViewController.swift */; };
 		71E43B5A1F518764007EDFDA /* TopicDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E43B591F518764007EDFDA /* TopicDetailsViewController.swift */; };
@@ -44,6 +45,7 @@
 		7140C7B71F51CB3E00405582 /* TopicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicTableViewCell.swift; sourceTree = "<group>"; };
 		7140C7B91F51D00600405582 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		7140C7BC1F51DD1B00405582 /* AddTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTopicViewController.swift; sourceTree = "<group>"; };
+		714B1DF81F5336CE0012EE7F /* PopUpDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopUpDelegate.swift; sourceTree = "<group>"; };
 		71E43B551F518731007EDFDA /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		71E43B571F51874E007EDFDA /* TopicsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicsTableViewController.swift; sourceTree = "<group>"; };
 		71E43B591F518764007EDFDA /* TopicDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicDetailsViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				7105FE2A1F517E09003D8BD6 /* Main.storyboard */,
 				7105FE2F1F517E09003D8BD6 /* LaunchScreen.storyboard */,
 				71156B0B1F51F5950036FA82 /* Cells */,
+				714B1DF81F5336CE0012EE7F /* PopUpDelegate.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -266,11 +269,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-SelecaoSABER/Pods-SelecaoSABER-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -339,6 +344,7 @@
 				71E43B631F519081007EDFDA /* Content.swift in Sources */,
 				71156B0D1F51F8160036FA82 /* ContentCell.swift in Sources */,
 				71E43B691F519BA9007EDFDA /* Constant.swift in Sources */,
+				714B1DF91F5336CE0012EE7F /* PopUpDelegate.swift in Sources */,
 				71156B0A1F51F4CB0036FA82 /* CommentTableViewCell.swift in Sources */,
 				71156B081F51F4BD0036FA82 /* MessageTableViewCell.swift in Sources */,
 				71E43B5A1F518764007EDFDA /* TopicDetailsViewController.swift in Sources */,
