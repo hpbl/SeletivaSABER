@@ -11,6 +11,7 @@ import UIKit
 class AddTopicViewController: UIViewController {
     
     var newTopic: (title: String, message: String)?
+    var formChecker: FormCheckerDelegate = FormChecker()
 
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var messageTextView: UITextView!
@@ -33,25 +34,17 @@ class AddTopicViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.messageTextView.delegate = self
-        self.titleTextField.delegate = self
-        self.saveButton.isEnabled = false
+        self.formChecker.setDelegate(for: [self.messageTextView, self.titleTextField],
+                                     button: nil,
+                                     barButton: self.saveButton)
+        
+        self.addBorder(to: self.messageTextView)
+
     }
     
-    func completedFillingFields() -> Bool {
-        return self.titleTextField.hasText && self.messageTextView.hasText
-    }
-}
-
-extension AddTopicViewController: UITextViewDelegate {
-
-    func textViewDidEndEditing(_ textView: UITextView) {
-        self.saveButton.isEnabled = self.completedFillingFields()
-    }
-}
-
-extension AddTopicViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        self.saveButton.isEnabled = self.completedFillingFields()
+    func addBorder(to textView: UITextView) {
+        textView.layer.borderColor = Constant.Color.textViewBorder.cgColor
+        textView.layer.borderWidth = 0.5
+        textView.layer.cornerRadius = 5
     }
 }

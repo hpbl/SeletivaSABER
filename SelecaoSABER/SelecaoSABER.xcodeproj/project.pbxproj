@@ -27,6 +27,8 @@
 		71E43B651F5194A5007EDFDA /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E43B641F5194A5007EDFDA /* DataProvider.swift */; };
 		71E43B671F519980007EDFDA /* SABERClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E43B661F519980007EDFDA /* SABERClient.swift */; };
 		71E43B691F519BA9007EDFDA /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71E43B681F519BA9007EDFDA /* Constant.swift */; };
+		71FB3F7F1F5300E600E6AD43 /* FormCheckerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB3F7E1F5300E600E6AD43 /* FormCheckerDelegate.swift */; };
+		71FB3F821F53093700E6AD43 /* FormChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FB3F811F53093700E6AD43 /* FormChecker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		71E43B641F5194A5007EDFDA /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		71E43B661F519980007EDFDA /* SABERClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SABERClient.swift; sourceTree = "<group>"; };
 		71E43B681F519BA9007EDFDA /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		71FB3F7E1F5300E600E6AD43 /* FormCheckerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormCheckerDelegate.swift; sourceTree = "<group>"; };
+		71FB3F811F53093700E6AD43 /* FormChecker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormChecker.swift; sourceTree = "<group>"; };
 		9DB2F85242A53EF087DD4BE2 /* Pods-SelecaoSABER.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelecaoSABER.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SelecaoSABER/Pods-SelecaoSABER.debug.xcconfig"; sourceTree = "<group>"; };
 		BD0A581E2F0A75879C11BA8F /* Pods-SelecaoSABER.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SelecaoSABER.release.xcconfig"; path = "Pods/Target Support Files/Pods-SelecaoSABER/Pods-SelecaoSABER.release.xcconfig"; sourceTree = "<group>"; };
 		C7B5DBE5A4828B6FEB71E178 /* Pods_SelecaoSABER.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SelecaoSABER.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +96,7 @@
 				7105FE261F517E09003D8BD6 /* AppDelegate.swift */,
 				71E43B681F519BA9007EDFDA /* Constant.swift */,
 				7140C7B91F51D00600405582 /* Extensions.swift */,
+				71FB3F831F53119800E6AD43 /* Form Checking */,
 				7140C7B21F51C90100405582 /* Networking */,
 				71E43B5F1F518EBC007EDFDA /* Model */,
 				71E43B5C1F51877C007EDFDA /* Views */,
@@ -151,6 +156,15 @@
 				71E43B601F518F57007EDFDA /* Comment.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		71FB3F831F53119800E6AD43 /* Form Checking */ = {
+			isa = PBXGroup;
+			children = (
+				71FB3F7E1F5300E600E6AD43 /* FormCheckerDelegate.swift */,
+				71FB3F811F53093700E6AD43 /* FormChecker.swift */,
+			);
+			name = "Form Checking";
 			sourceTree = "<group>";
 		};
 		B5AC3A447FC73E4C8DF4579E /* Frameworks */ = {
@@ -307,6 +321,7 @@
 				71E43B611F518F57007EDFDA /* Comment.swift in Sources */,
 				71E43B651F5194A5007EDFDA /* DataProvider.swift in Sources */,
 				7140C7BD1F51DD1C00405582 /* AddTopicViewController.swift in Sources */,
+				71FB3F7F1F5300E600E6AD43 /* FormCheckerDelegate.swift in Sources */,
 				71E43B631F519081007EDFDA /* Content.swift in Sources */,
 				71156B0D1F51F8160036FA82 /* ContentCell.swift in Sources */,
 				71E43B691F519BA9007EDFDA /* Constant.swift in Sources */,
@@ -316,6 +331,7 @@
 				7140C7BA1F51D00600405582 /* Extensions.swift in Sources */,
 				7140C7B81F51CB3E00405582 /* TopicTableViewCell.swift in Sources */,
 				7105FE271F517E09003D8BD6 /* AppDelegate.swift in Sources */,
+				71FB3F821F53093700E6AD43 /* FormChecker.swift in Sources */,
 				71E43B581F51874E007EDFDA /* TopicsTableViewController.swift in Sources */,
 				71E43B5E1F518EB7007EDFDA /* Post.swift in Sources */,
 			);

@@ -195,7 +195,7 @@
                                 <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GeE-Hw-0dT">
-                                <rect key="frame" x="16" y="223" width="288" height="199"/>
+                                <rect key="frame" x="16" y="223" width="288" height="132"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -336,6 +336,9 @@
                                 <state key="normal" title="&gt;">
                                     <color key="titleColor" red="0.3833237886428833" green="0.66018414497375488" blue="0.27701601386070251" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
                                     <action selector="sendComment:" destination="yT6-Gc-9Wv" eventType="touchUpInside" id="L5h-nZ-7QO"/>
                                 </connections>
@@ -358,6 +361,7 @@
                     <connections>
                         <outlet property="commentTextField" destination="FS6-Hk-Bh2" id="QSr-wX-ozt"/>
                         <outlet property="detailsTableView" destination="DAa-sG-S7a" id="UUL-pd-fHe"/>
+                        <outlet property="sendButton" destination="dnb-E3-gfs" id="Z1W-7o-N3i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPK-rR-HeU" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Properties
     var webClient: DataProvider = SABERClient()
+    var formChecker: FormCheckerDelegate = FormChecker()
     
     // MARK: - Actions
     @IBAction func login(_ sender: UIButton) {
@@ -39,8 +40,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.keyTextField.delegate = self
-        self.loginButton.isEnabled = false
+        self.formChecker.setDelegate(for: [self.keyTextField],
+                                     button: self.loginButton,
+                                     barButton: nil)
         // Do any additional setup after loading the view.
     }
 
@@ -62,13 +64,5 @@ class LoginViewController: UIViewController {
             self.loginButton.isEnabled = true
             self.invalidKeyLabel.isHidden = false
         }
-    }
-}
-
-extension LoginViewController: UITextFieldDelegate {
-    
-    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
-        
-        self.loginButton.isEnabled = textField.hasText
     }
 }

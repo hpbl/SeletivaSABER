@@ -16,8 +16,10 @@ class TopicDetailsViewController: UIViewController {
     }
     var topic: Post!
     var webClient: DataProvider = SABERClient()
+    var formChecker: FormCheckerDelegate = FormChecker()
 
     
+    @IBOutlet weak var sendButton: UIButton!
     @IBOutlet weak var detailsTableView: UITableView!
     @IBOutlet weak var commentTextField: UITextField!
     
@@ -25,20 +27,16 @@ class TopicDetailsViewController: UIViewController {
         self.commentTextField.resignFirstResponder()
         
         
-        guard let newCommentMessage = self.commentTextField.text else {
-            fatalError("Escreva um comentário")
-        }
-        
-        if !newCommentMessage.isEmpty {
-            self.webClient.saveComment(message: newCommentMessage, on: self.topic, callback: { (id, tid) in
-                guard id != nil else {
-                    fatalError("não salvou o comentário")
-                }
-                
-                self.commentTextField.text = ""
-                self.getComments()
-                
-               // self.detailsTableView.scrollToRow(at: IndexPath(row: self.comments.count, section: 1), at: UITableViewScrollPosition.bottom, animated: true)
+        if !self.commentTextField.text!.isEmpty {
+            self.webClient.saveComment(message: self.commentTextField.text!,
+                                       on: self.topic,
+                                       callback: { (id, tid) in
+                                        guard id != nil else {
+                                            fatalError("não salvou o comentário")
+                                        }
+                                        
+                                        self.commentTextField.text = ""
+                                        self.getComments()
             })
         }
     }
@@ -48,6 +46,10 @@ class TopicDetailsViewController: UIViewController {
         
         self.detailsTableView.delegate = self
         self.detailsTableView.dataSource = self
+        
+        self.formChecker.setDelegate(for: [self.commentTextField],
+                                     button: self.sendButton,
+                                     barButton: nil)
         
         self.getComments()
     }

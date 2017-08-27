@@ -6,7 +6,7 @@
 //  Copyright © 2017 Hilton Pintor. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 struct Constant {
     static let endPoint = "https://mobile.sabertecnologias.com.br/api_seletiva"
@@ -21,5 +21,12 @@ struct Constant {
     enum SerializationError: Error {
         case missing(String)
         case invalid(String, Any)
+    }
+    
+    struct Color {
+        static let textViewBorder = UIColor(red:204.0/255.0,
+                                             green:204.0/255.0,
+                                             blue:204.0/255.0,
+                                             alpha:1.0)
     }
 }
