@@ -11,6 +11,8 @@ import UIKit
 class LoginViewController: UIViewController {
 
     // MARK: - Outlets
+    @IBOutlet weak var invalidKeyLabel: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var keyTextField: UITextField!
@@ -23,12 +25,13 @@ class LoginViewController: UIViewController {
         
         self.webClient.generateToken(from: self.keyTextField.text!) {
             token in
-            
+            self.waitAsyncRequest()
             if token != nil {
+                self.finishedWaiting(true)
                 self.performSegue(withIdentifier: "LoginToTopics",
                                   sender: self)
             } else {
-                
+                self.finishedWaiting(false)
             }
         }
     }
@@ -44,6 +47,21 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func waitAsyncRequest() {
+        self.activityIndicator.startAnimating()
+        self.loginButton.isEnabled = false
+        self.invalidKeyLabel.isHidden = true
+    }
+    
+    func finishedWaiting(_ success: Bool) {
+        self.activityIndicator.stopAnimating()
+        
+        if !success {
+            self.loginButton.isEnabled = true
+            self.invalidKeyLabel.isHidden = false
+        }
     }
 }
 

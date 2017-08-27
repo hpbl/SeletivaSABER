@@ -104,10 +104,10 @@ class SABERClient: DataProvider {
                           method: .post)
             .responseJSON { response in
                 if let json = response.result.value as? [String: Any] {
-                    if let token = json["token"] as? String {
+                    if let token = json["apiToken"] as? String {
                         self.accessToken = token
                     }
-                    callback(json["token"] as? String)
+                    callback(json["apiToken"] as? String)
                 } else {
                     fatalError("retorno inesperado")
                 }

@@ -41,18 +41,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5Ct-st-UhL">
+                                <rect key="frame" x="142" y="222" width="37" height="37"/>
+                                <color key="color" red="0.3833237886428833" green="0.66018414497375488" blue="0.27701601386070251" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chave Inválida" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ez3-Co-LLP">
+                                <rect key="frame" x="57" y="373" width="124" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfQ-qr-k2J">
-                                <rect key="frame" x="217" y="375" width="46" height="30"/>
+                                <rect key="frame" x="217" y="367" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nJT-bO-nJB"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5Ct-st-UhL">
-                                <rect key="frame" x="142" y="222" width="37" height="37"/>
-                                <color key="color" red="0.3833237886428833" green="0.66018414497375488" blue="0.27701601386070251" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -62,6 +69,8 @@
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="O8y-nH-5Mf"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="5Ct-st-UhL" id="WMV-e6-fYs"/>
+                        <outlet property="invalidKeyLabel" destination="Ez3-Co-LLP" id="xp7-9D-AH2"/>
                         <outlet property="keyTextField" destination="5WB-D8-5kh" id="EDD-7B-AkL"/>
                         <outlet property="loginButton" destination="XfQ-qr-k2J" id="32k-f8-Bkx"/>
                         <outlet property="logoImageView" destination="ouu-uC-NlY" id="N1D-Pv-4dO"/>
