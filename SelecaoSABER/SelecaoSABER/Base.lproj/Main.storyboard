@@ -220,6 +220,7 @@
                     </view>
                     <connections>
                         <outlet property="messageTextView" destination="GeE-Hw-0dT" id="4VA-ra-TlD"/>
+                        <outlet property="saveButton" destination="Hzg-sY-8qt" id="td9-bL-hu7"/>
                         <outlet property="titleTextField" destination="fxi-BQ-wgc" id="ICn-Dg-EiG"/>
                         <segue destination="ujd-RA-vuP" kind="unwind" identifier="unwindToTopics" unwindAction="unwindFromAddTopicWithSender:" id="dJC-vp-uRJ"/>
                     </connections>

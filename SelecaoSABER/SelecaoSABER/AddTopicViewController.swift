@@ -12,23 +12,18 @@ class AddTopicViewController: UIViewController {
     
     var newTopic: (title: String, message: String)?
 
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var titleTextField: UITextField!
     
     @IBAction func save(_ sender: UIBarButtonItem) {
-        guard let title = self.titleTextField.text else {
-            fatalError("preencha um título")
-        }
         
-        if !title.isEmpty &&
-            !self.messageTextView.text.isEmpty {
-            
-            self.newTopic = (title: title,
-                             message: self.messageTextView.text)
-            
-            self.performSegue(withIdentifier: "unwindToTopics",
-                              sender: self)
-        }
+        self.newTopic = (title: self.titleTextField.text!,
+                         message: self.messageTextView.text)
+        
+        self.performSegue(withIdentifier: "unwindToTopics",
+                          sender: self)
+        
     }
     
     @IBAction func cancel(_ sender: UIBarButtonItem) {
@@ -37,24 +32,26 @@ class AddTopicViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        self.messageTextView.delegate = self
+        self.titleTextField.delegate = self
+        self.saveButton.isEnabled = false
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func completedFillingFields() -> Bool {
+        return self.titleTextField.hasText && self.messageTextView.hasText
     }
-    */
+}
 
+extension AddTopicViewController: UITextViewDelegate {
+
+    func textViewDidEndEditing(_ textView: UITextView) {
+        self.saveButton.isEnabled = self.completedFillingFields()
+    }
+}
+
+extension AddTopicViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        self.saveButton.isEnabled = self.completedFillingFields()
+    }
 }
