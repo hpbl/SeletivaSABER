@@ -43,10 +43,10 @@ class SABERClient: DataProvider {
         }
     }
     
-    func savePost(title: String, message: String, callback: @escaping (Int?, Error?) -> Void) {
+    func savePost(newPost: NewPost, callback: @escaping (Int?, Error?) -> Void) {
         let requestURL = Constant.endPoint + Constant.URI.createPost.rawValue
         
-        let requestBody = ["title": title, "message": message]
+        let requestBody = ["title": newPost.title, "message": newPost.message]
         
         Alamofire.request(requestURL,
                           method: .post,
@@ -96,19 +96,24 @@ class SABERClient: DataProvider {
         
     }
     
-    func saveComment(message: String, on post: Post, callback: @escaping (Any?, Any?) -> Void) {
-        let requestURL = Constant.endPoint + Constant.URI.addComment.rawValue + String(post.id)
+    func saveComment(newComment: NewComment, callback: @escaping (Any?, Any?, Error?) -> Void) {
+        let requestURL = Constant.endPoint + Constant.URI.addComment.rawValue + String(newComment.post.id)
         
         Alamofire.request(requestURL,
                           method: .post,
-                          parameters: ["message": message],
+                          parameters: ["message": newComment.message],
                           headers: self.headers)
             .responseJSON { response in
-                if let resultJSON = response.result.value as? [String: Any] {
+                switch (response.result) {
                     
-                    callback(resultJSON["id"], resultJSON["tid"])
-                } else {
-                    print("que houve?")
+                case .success(let value):
+                    if let resultJSON = value as? [String: Any] {
+                        
+                        callback(resultJSON["id"], resultJSON["tid"], nil)
+                    }
+                    
+                case .failure(let error):
+                    callback(nil, nil, error)
                 }
         }
     }

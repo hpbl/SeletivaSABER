@@ -23,3 +23,4 @@ extension UIImage {
 }
 
 typealias NewPost = (title: String, message: String)
+typealias NewComment = (message: String, post: Post)

@@ -50,8 +50,7 @@ class TopicsTableViewController: UITableViewController {
     }
     
     func save(newPost: NewPost) {
-        self.webClient.savePost(title: newPost.title,
-                                message: newPost.message,
+        self.webClient.savePost(newPost: newPost,
                                 callback: { (newId, error) in
                                     if newId != nil {
                                         self.getPosts()

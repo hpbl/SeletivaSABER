@@ -14,11 +14,11 @@ protocol DataProvider {
     
     func getPosts(_ callback: @escaping ([Post]?, Error?) -> Void)
     
-    func savePost(title: String, message: String, callback: @escaping (Int?, Error?) -> Void)
+    func savePost(newPost: NewPost, callback: @escaping (Int?, Error?) -> Void)
     
     func getComments(for post: Post, callback: @escaping ([Comment]?, Error?) -> Void)
     
-    func saveComment(message: String, on post: Post, callback: @escaping (Any?, Any?) -> Void)
+    func saveComment(newComment: NewComment, callback: @escaping (Any?, Any?, Error?) -> Void)
     
     func generateToken(from key: String, callback: @escaping (String?, Error?) -> Void)
 }

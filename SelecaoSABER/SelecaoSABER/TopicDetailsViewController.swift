@@ -28,17 +28,8 @@ class TopicDetailsViewController: UIViewController {
         
         
         if !self.commentTextField.text!.isEmpty {
-            self.webClient.saveComment(message: self.commentTextField.text!,
-                                       on: self.topic,
-                                       callback: { (id, tid) in
-                                        guard id != nil else {
-                                            //TODO: TRATAR ERRO
-                                            fatalError("não salvou o comentário")
-                                        }
-                                        
-                                        self.commentTextField.text = ""
-                                        self.getComments()
-            })
+            let newComment = (message: self.commentTextField.text!, post: self.topic!)
+                self.save(newComment: newComment)
         }
     }
     
@@ -68,6 +59,23 @@ class TopicDetailsViewController: UIViewController {
                 PopUpDelegate.showNoNetworkPopup(on: self, with: self.getComments)
             }
         }
+    }
+    
+    func save(newComment: NewComment) {
+        self.webClient.saveComment(newComment: newComment,
+                                   callback: { (id, tid, error) in
+                                    if id != nil {
+                                        self.commentTextField.text = ""
+                                        self.getComments()
+                                        
+                                    } else {
+                                        PopUpDelegate.showSavingErrorPopop(on: self,
+                                                                           for: newComment,
+                                                                           with: self.save(newComment:))
+                                    }
+                                    
+                                    
+        })
     }
 }
 
