@@ -27,24 +27,45 @@
                                 <rect key="frame" x="57" y="85" width="206" height="206"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUV-47-cKg">
-                                <rect key="frame" x="119" y="325" width="83" height="54"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex: hpbl220" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5WB-D8-5kh">
+                                <rect key="frame" x="57" y="337" width="206" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <state key="normal" title="login">
-                                    <color key="titleColor" red="0.3833237886428833" green="0.66018414497375488" blue="0.27701601386070251" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chave:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kHG-S6-nPa">
+                                <rect key="frame" x="57" y="308" width="53" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XfQ-qr-k2J">
+                                <rect key="frame" x="217" y="375" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Login"/>
                                 <connections>
-                                    <segue destination="CaM-0Y-hcX" kind="show" id="fms-cv-XU3"/>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nJT-bO-nJB"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="5Ct-st-UhL">
+                                <rect key="frame" x="142" y="222" width="37" height="37"/>
+                                <color key="color" red="0.3833237886428833" green="0.66018414497375488" blue="0.27701601386070251" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5Ct-st-UhL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UDw-cI-byI"/>
+                            <constraint firstItem="5Ct-st-UhL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="bOS-TR-nbP"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Login" id="O8y-nH-5Mf"/>
                     <connections>
-                        <outlet property="loginButton" destination="aUV-47-cKg" id="kdM-ri-HOu"/>
+                        <outlet property="keyTextField" destination="5WB-D8-5kh" id="EDD-7B-AkL"/>
+                        <outlet property="loginButton" destination="XfQ-qr-k2J" id="32k-f8-Bkx"/>
                         <outlet property="logoImageView" destination="ouu-uC-NlY" id="N1D-Pv-4dO"/>
+                        <segue destination="CaM-0Y-hcX" kind="show" identifier="LoginToTopics" id="Y5L-WX-Ure"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

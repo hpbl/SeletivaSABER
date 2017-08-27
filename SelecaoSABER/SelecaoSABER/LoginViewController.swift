@@ -10,14 +10,34 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
+    // MARK: - Outlets
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var keyTextField: UITextField!
     
+    // MARK: - Properties
+    var webClient: DataProvider = SABERClient()
+    
+    // MARK: - Actions
+    @IBAction func login(_ sender: UIButton) {
+        
+        self.webClient.generateToken(from: self.keyTextField.text!) {
+            token in
+            
+            if token != nil {
+                self.performSegue(withIdentifier: "LoginToTopics",
+                                  sender: self)
+            } else {
+                
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-
+        self.keyTextField.delegate = self
+        self.loginButton.isEnabled = false
         // Do any additional setup after loading the view.
     }
 
@@ -25,16 +45,12 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+}
+
+extension LoginViewController: UITextFieldDelegate {
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextFieldDidEndEditingReason) {
+        
+        self.loginButton.isEnabled = textField.hasText
     }
-    */
-
 }

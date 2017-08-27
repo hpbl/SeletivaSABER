@@ -15,6 +15,7 @@ struct Constant {
         case forum = "/forum/"
         case createPost = "/forum/create_post/"
         case addComment = "/forum/add_comment/"
+        case reset = "/users/reset/"
     }
     
     enum SerializationError: Error {

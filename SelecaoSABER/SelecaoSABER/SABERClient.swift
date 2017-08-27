@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-class SABERClient: ForumAPIClient {
+class SABERClient: DataProvider {
     var accessToken: String = "4847f8cd66020a31d57c0a7d26f6a82e1fd992dd"
     
     var headers: HTTPHeaders {
@@ -95,6 +95,21 @@ class SABERClient: ForumAPIClient {
                     callback(resultJSON["id"], resultJSON["tid"])
                 } else {
                     print("que houve?")
+                }
+        }
+    }
+    
+    func generateToken(from key: String, callback: @escaping (String?) -> Void) {
+        Alamofire.request(Constant.endPoint + Constant.URI.reset.rawValue + key,
+                          method: .post)
+            .responseJSON { response in
+                if let json = response.result.value as? [String: Any] {
+                    if let token = json["token"] as? String {
+                        self.accessToken = token
+                    }
+                    callback(json["token"] as? String)
+                } else {
+                    fatalError("retorno inesperado")
                 }
         }
     }

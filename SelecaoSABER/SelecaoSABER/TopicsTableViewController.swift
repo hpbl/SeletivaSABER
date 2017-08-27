@@ -20,7 +20,7 @@ class TopicsTableViewController: UITableViewController {
             self.topicsTableView.reloadData()
         }
     }
-    var webClient: ForumAPIClient = SABERClient()
+    var webClient: DataProvider = SABERClient()
 
     
     override func viewDidLoad() {

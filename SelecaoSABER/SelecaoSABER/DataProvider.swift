@@ -9,7 +9,7 @@
 import Foundation
 
 
-protocol ForumAPIClient {
+protocol DataProvider {
     var accessToken: String { get set }
     
     func getPosts(_ callback: @escaping ([Post]) -> Void)
@@ -19,4 +19,6 @@ protocol ForumAPIClient {
     func getComments(for post: Post, callback: @escaping ([Comment]) -> Void)
     
     func saveComment(message: String, on post: Post, callback: @escaping (Any?, Any?) -> Void)
+    
+    func generateToken(from key: String, callback: @escaping (String?) -> Void)
 }

@@ -15,7 +15,7 @@ class TopicDetailsViewController: UIViewController {
         }
     }
     var topic: Post!
-    var webClient: ForumAPIClient = SABERClient()
+    var webClient: DataProvider = SABERClient()
 
     
     @IBOutlet weak var detailsTableView: UITableView!
