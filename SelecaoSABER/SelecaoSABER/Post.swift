@@ -23,7 +23,7 @@ class Post: Content {
         
         guard let title = json["title"] as? String else {
                 //throw Constant.SerializationError.missing("id")
-                //TODO: TRATAR ERRO
+                //TODO: TRATAR ERRO de serialização
                 fatalError("erro de serialização do Post")
         }
         

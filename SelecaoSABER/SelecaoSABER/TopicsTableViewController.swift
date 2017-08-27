@@ -40,8 +40,12 @@ class TopicsTableViewController: UITableViewController {
     
     // MARK: - Webservice requests
     func getPosts() {
-        self.webClient.getPosts { (returnedPosts) in
-            self.topics = returnedPosts
+        self.webClient.getPosts { returnedPosts, error in
+            if let returnedPosts = returnedPosts {
+                self.topics = returnedPosts
+            } else if error != nil {
+                PopUpDelegate.showNoNetworkPopup(on: self, with: self.getPosts)
+            }
         }
     }
     

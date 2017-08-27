@@ -11,7 +11,8 @@ import UIKit
 
 class PopUpDelegate {
     
-    class func showNoNetworkPopup(on viewController: UIViewController) {
+    class func showNoNetworkPopup(on viewController: UIViewController,
+                                  with tryAgainAction: @escaping () -> ()) {
         let title = "Algo não está certo"
         let message = "Verifique sua conexão com a internet e tente novamente"
         
@@ -23,10 +24,12 @@ class PopUpDelegate {
         }
         
         let tryAgainButton = DefaultButton(title: "tentar novamente") {
-            print("What a beauty!")
+            tryAgainAction()
         }
         
         popup.addButtons([cancelButton, tryAgainButton])
+        
+        popup.buttonAlignment = .horizontal
 
         viewController.present(popup, animated: true, completion: nil)
     }

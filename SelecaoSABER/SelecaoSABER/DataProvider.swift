@@ -12,7 +12,7 @@ import Foundation
 protocol DataProvider {
     var accessToken: String { get set }
     
-    func getPosts(_ callback: @escaping ([Post]) -> Void)
+    func getPosts(_ callback: @escaping ([Post]?, Error?) -> Void)
     
     func savePost(title: String, message: String, callback: @escaping (Int?) -> Void)
     

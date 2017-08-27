@@ -18,26 +18,27 @@ class SABERClient: DataProvider {
         }
     }
     
-    func getPosts(_ callback: @escaping ([Post]) -> Void) {
+    func getPosts(_ callback: @escaping ([Post]?, Error?) -> Void) {
         let requestURL = Constant.endPoint + Constant.URI.forum.rawValue
         
         Alamofire.request(requestURL,
                           method: .get,
                           headers: self.headers)
             .responseJSON  { response in
-                if let resultJSON = response.result.value as? [String: [Any]] {
-                    
-                    if let postsJSON = resultJSON["posts"] as? [[String: Any]] {
-                        var posts: [Post] = []
-                        for postJSON in postsJSON {
-                            posts.append(Post(from: postJSON))
-                        }
+                switch (response.result) {
+                case .success(let value):
+                    if let resultJSON = value as? [String: [Any]] {
                         
-                        callback(posts)
+                        if let postsJSON = resultJSON["posts"] as? [[String: Any]] {
+                            var posts: [Post] = []
+                            for postJSON in postsJSON {
+                                posts.append(Post(from: postJSON))
+                            }
+                            callback(posts, nil)
+                        }
                     }
-                } else {
-                    //TODO: TRATAR ERRO
-                    fatalError("no response")
+                case .failure(let error):
+                    callback(nil, error)
                 }
         }
     }
@@ -108,7 +109,7 @@ class SABERClient: DataProvider {
                 
                 switch (response.result) {
                 case .success(let value):
-                    if let json = response.result.value as? [String: Any] {
+                    if let json = value as? [String: Any] {
                         if let token = json["apiToken"] as? String {
                             self.accessToken = token
                         }

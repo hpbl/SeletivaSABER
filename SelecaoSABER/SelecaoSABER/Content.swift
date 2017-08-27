@@ -23,7 +23,12 @@ class Content {
         self.author = author
         self.avatar = avatar
         self.message = message
-        self.avatarImage = UIImage(from: self.avatar)
+        
+        if let avatarImage = UIImage(from: self.avatar) {
+            self.avatarImage = avatarImage
+        } else {
+            self.avatarImage = #imageLiteral(resourceName: "noAvatar")
+        }
     }
     
     // initializing object from json
@@ -34,7 +39,7 @@ class Content {
             let avatar = json["avatar"] as? String,
             let message = json["message"] as? String else {
                 //throw Constant.SerializationError.missing("id")
-                //TODO: TRATAR ERRO
+                //TODO: TRATAR ERRO DE serialização
                 fatalError("erro de serialização do Post")
         }
         
@@ -43,6 +48,11 @@ class Content {
         self.author = author
         self.avatar = avatar
         self.message = message
-        self.avatarImage = UIImage(from: self.avatar)
+        
+        if let avatarImage = UIImage(from: self.avatar) {
+            self.avatarImage = avatarImage
+        } else {
+            self.avatarImage = #imageLiteral(resourceName: "noAvatar")
+        }
     }
 }

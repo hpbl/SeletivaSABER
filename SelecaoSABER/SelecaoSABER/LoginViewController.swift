@@ -23,23 +23,7 @@ class LoginViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func login(_ sender: UIButton) {
-        
-        self.webClient.generateToken(from: self.keyTextField.text!) {
-            token, error in
-            self.waitAsyncRequest()
-            if token != nil {
-                self.performSegue(withIdentifier: "LoginToTopics",
-                                  sender: self)
-            } else if error != nil {
-                PopUpDelegate.showNoNetworkPopup(on: self)
-            } else {
-                self.invalidKeyLabel.isHidden = false
-            }
-            self.activityIndicator.stopAnimating()
-            self.loginButton.isEnabled = true
-
-
-        }
+        self.generateToken()
     }
     
     override func viewDidLoad() {
@@ -53,6 +37,24 @@ class LoginViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func generateToken() {
+        self.webClient.generateToken(from: self.keyTextField.text!) {
+            token, error in
+            self.waitAsyncRequest()
+            if token != nil {
+                self.performSegue(withIdentifier: "LoginToTopics",
+                                  sender: self)
+            } else if error != nil {
+                PopUpDelegate.showNoNetworkPopup(on: self,
+                                                 with: self.generateToken)
+            } else {
+                self.invalidKeyLabel.isHidden = false
+            }
+            self.activityIndicator.stopAnimating()
+            self.loginButton.isEnabled = true
+        }
     }
     
     func waitAsyncRequest() {
