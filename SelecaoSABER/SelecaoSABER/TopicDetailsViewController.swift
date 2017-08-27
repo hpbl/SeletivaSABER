@@ -61,8 +61,12 @@ class TopicDetailsViewController: UIViewController {
     }
     
     func getComments() {
-        self.webClient.getComments(for: self.topic) { (comments) in
-            self.comments = comments
+        self.webClient.getComments(for: self.topic) { (comments, error) in
+            if let comments = comments {
+                self.comments = comments
+            } else {
+                PopUpDelegate.showNoNetworkPopup(on: self, with: self.getComments)
+            }
         }
     }
 }

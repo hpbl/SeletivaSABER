@@ -16,7 +16,7 @@ protocol DataProvider {
     
     func savePost(title: String, message: String, callback: @escaping (Int?, Error?) -> Void)
     
-    func getComments(for post: Post, callback: @escaping ([Comment]) -> Void)
+    func getComments(for post: Post, callback: @escaping ([Comment]?, Error?) -> Void)
     
     func saveComment(message: String, on post: Post, callback: @escaping (Any?, Any?) -> Void)
     
